@@ -39,7 +39,7 @@ def generate_playlist():
                         channel_links[href] = title.strip()
         except: pass
         
-    print(f"\n Toplam {len(channel_links)} kanal için agresif spor çözücü başlatılıyor...")
+    print(f"\n Toplam {len(channel_links)} kanal için düzeltilmiş spor çözücü başlatılıyor...")
     
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = [executor.submit(extract_m3u8_from_seir, scraper, href, title) for href, title in channel_links.items()]
@@ -47,7 +47,7 @@ def generate_playlist():
             res = future.result()
             if res and isinstance(res, tuple) and len(res) == 2:
                 results.append(res)
-                print(f"   🔥 [BAŞARILI] {res[0]} kanalı çözüldü.")
+                print(f"   🔥 [BAŞARILI] {res} kanalı listeye eklendi.")
                 
     playlist = "#EXTM3U\n"
     for title, url in results:
@@ -61,16 +61,30 @@ def extract_m3u8_from_seir(scraper, url, title):
         r = scraper.get(url, timeout=12)
         html = r.text
         
-        # Spor sayfalarındaki TÜM iframe bağlantılarını (Player 1, 2, 3) listeye alıyoruz
+        # Sayfadaki tüm iframe'leri topla
         iframes = re.findall(r'<iframe[^>]*src=[\"\']?([^\"\'\s>]+)[\"\']?[^>]*>', html, re.IGNORECASE)
         
-        # Eğer sayfada doğrudan m3u8 gizlendiyse ilk aşamada kurtar
+        # Reklam tuzaklarını ve sabit bTV iframe'lerini temizleyen akıllı filtre
+        clean_iframes = []
+        for ifr in iframes:
+            # Sitenin yan menüsündeki sabit reklam veya btv oynatıcı iframe'lerini eliyoruz
+            if "btv" in ifr.lower() and "btv" not in title.lower():
+                continue
+            if "guide" in ifr.lower() or "banner" in ifr.lower():
+                continue
+            clean_iframes.append(ifr)
+            
+        # Eğer temizlenmiş iframe kalmadıysa ilk bulunanları koru (Güvenlik önlemi)
+        if not clean_iframes:
+            clean_iframes = iframes
+            
+        # 1. Aşama: Sayfa kaynak kodunda doğrudan gizlenmiş m3u8 araması
         m_direct = re.search(r'(https?://[^\s\"\'<>]*\.m3u8[^\s\"\'<>]*)', html)
         if m_direct:
             return (title, m_direct.group(1).replace('\\/', '/'))
             
-        # Bulunan tüm alternatif player iframelerini sırayla tara (Hatalı olanı atla, çalışan m3u8'i bul)
-        for embed_url in iframes:
+        # 2. Aşama: Sadece kanala ait olan temizlenmiş oynatıcı iframe'lerini sırayla tara
+        for embed_url in clean_iframes:
             try:
                 if embed_url.startswith('//'): embed_url = 'https:' + embed_url
                 elif embed_url.startswith('/'): embed_url = 'https://seirsanduk.online' + embed_url
@@ -78,12 +92,7 @@ def extract_m3u8_from_seir(scraper, url, title):
                 embed_r = scraper.get(embed_url, headers={'Referer': url, 'Origin': 'https://seirsanduk.online'}, timeout=8)
                 embed_html = embed_r.text
                 
-                # 1. Aşama: Oynatıcı kodlarının içinde .m3u8 akışı var mı bak
-                m_sub = re.search(r'(https?://[^\s\"\'<>\\#]*\.m3u8[^\s\"\'<>\\#]*)', embed_html)
-                if m_sub:
-                    return (title, m_sub.group(1).replace('\\/', '/'))
-                
-                # 2. Aşama: Gizli span ve şifreli dizileri birleştirme (Klasik JagoBD/SeirSanduk şifresi)
+                # Şifreli kod bloklarını birleştiren JavaScript çözücü mekanizması
                 src_match = re.search(r'src:\s*([a-zA-Z0-9_]+)\s*\(\),', embed_html)
                 if src_match:
                     func_name = src_match.group(1)
@@ -101,14 +110,22 @@ def extract_m3u8_from_seir(scraper, url, title):
                             if var_match: base_url += "".join(ast.literal_eval(var_match.group(1)))
                             
                         doc_joins = re.findall(r'document\.getElementById\([\'"]([a-zA-Z0-9_]+)[\'"]\)\.innerHTML', expression)
+                        if not doc_joins:
+                            doc_joins = re.findall(r'document\.getElementById\(([a-zA-Z0-9_]+)\)\.innerHTML', expression)
+                            
                         for span_id in doc_joins:
                             span_match = re.search(rf'<span[^>]*id=[\'\"]?{span_id}[\'\"]?[^>]*>(.*?)</span>', embed_html)
                             if span_match: base_url += span_match.group(1).strip()
                             
                         if "http" in base_url:
                             return (title, base_url.replace('\\/', '/'))
+                            
+                # Kodların içinde ham sızan m3u8 varsa yakala
+                m_sub = re.search(r'(https?://[^\s\"\'<>\\#]*\.m3u8[^\s\"\'<>\\#]*)', embed_html)
+                if m_sub:
+                    return (title, m_sub.group(1).replace('\\/', '/'))
             except:
-                continue # Bu player butonu bozuksa veya boşsa bir sonrakine geç
+                continue
         return None
     except:
         return None
@@ -118,4 +135,4 @@ if __name__ == '__main__':
     if m3u8_content:
         with open('playlist.m3u8', 'w', encoding='utf-8') as f:
             f.write(m3u8_content)
-        print("\n [BAŞARILI] playlist.m3u8 dosyası güncellendi.")
+        print("\n [BAŞARILI] playlist.m3u8 dosyası hatasız güncellendi.")
