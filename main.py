@@ -5,172 +5,117 @@ import ast
 from concurrent.futures import ThreadPoolExecutor
 
 def generate_playlist():
-    # Seir Sanduk platformunun ana yayın akış şablonu
     categories = [
-        "https://www.seirsanduk.online/"
+        "https://seirsanduk.online"
     ]
     
     channel_links = {}
     results = []
     
-    # GitHub Actions bot engellerini ve AdBlock duvarını aşan gelişmiş scraper
     scraper = cloudscraper.create_scraper(
-        browser={
-            'browser': 'chrome',
-            'platform': 'windows',
-            'desktop': True
-        }
+        browser={'browser': 'chrome', 'platform': 'windows', 'desktop': True}
     )
     
-    # Siteye sanki reklamları yükleyen gerçek bir kullanıcıymışız gibi davranıyoruz
     scraper.headers.update({
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'bg,en-US;q=0.7,en;q=0.3',
-        'Referer': 'https://www.seirsanduk.online/',
-        'Origin': 'https://www.seirsanduk.online',
-        'Alt-Used': 'www.seirsanduk.online',
-        'Sec-Fetch-Dest': 'iframe',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'same-origin'
+        'Referer': 'https://seirsanduk.online',
+        'Origin': 'https://seirsanduk.online'
     })
     
-    print("1. Seir Sanduk platformundan spor ve ulusal kanallar toplanıyor...")
+    print("1. Seir Sanduk listesinden tüm kanallar toplanıyor...")
     for cat in categories:
         try:
             r = scraper.get(cat, timeout=15)
-            if r.status_code != 200:
-                continue
-                
+            if r.status_code != 200: continue
             soup = BeautifulSoup(r.text, 'html.parser')
-            links = soup.find_all('a', href=True)
-            
-            for a in links:
+            for a in soup.find_all('a', href=True):
                 href = a['href']
-                # id=hd-diema-sport-hd gibi tüm canlı yayın parametrelerini yakalar
                 if 'id=' in href:
                     title = a.get('title') or a.text.strip()
-                    
-                    # Eğer URL tam değilse mutlak adrese dönüştür
-                    if href.startswith('?'):
-                        href = f"https://www.seirsanduk.online/{href}"
-                    elif href.startswith('/'):
-                        href = f"https://www.seirsanduk.online{href}"
-                        
-                    # Menü elemanlarını ve gereksiz yönlendirmeleri filtrele
-                    if not title or title.lower() in ['forum', 'връзка с нас', 'privacy policy']:
-                        continue
-                        
+                    if href.startswith('?'): href = f"https://seirsanduk.online{href}"
+                    if not title or title.lower() in ['forum', 'връзка с нас', 'privacy policy']: continue
                     if href not in channel_links:
                         channel_links[href] = title.strip()
-        except Exception as e:
-            print(f"Kanal listesi çekilirken hata oluştu: {str(e)}")
-            
-    if not channel_links:
-        print("Hata: Siteden hiçbir kanal bağlantısı ayıklanamadı!")
-        return ""
+        except: pass
         
-    print(f"\n Toplam {len(channel_links)} kanal bulundu. GitHub Actions şifre çözücü döngüsü başlatılıyor...")
+    print(f"\n Toplam {len(channel_links)} kanal için agresif spor çözücü başlatılıyor...")
     
-    # GitHub Actions süre sınırını yememek ve hızlıca bitirmek için iş parçacığı 5 yapıldı
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = [executor.submit(extract_m3u8_from_seir, scraper, href, title) for href, title in channel_links.items()]
         for future in futures:
             res = future.result()
             if res and isinstance(res, tuple) and len(res) == 2:
                 results.append(res)
-                print(f"   🔥 [BAŞARILI] {res[0]} için 20 dakikalık canlı token çözüldü.")
+                print(f"   🔥 [BAŞARILI] {res[0]} kanalı çözüldü.")
                 
-    if not results:
-        print("\n Hata: Kanallar tespit edildi fakat AdBlock/Bot duvarı aşılamadığı için m3u8 linkleri sökülemedi!")
-        return ""
-
-    # M3U Çalma Listesi Çıktısı
     playlist = "#EXTM3U\n"
     for title, url in results:
         playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
-        playlist += f'#EXTVLCOPT:http-referrer=https://www.seirsanduk.online/\n'
-        playlist += f'{url}|Referer=https://www.seirsanduk.online/\n'
-        
+        playlist += f'#EXTVLCOPT:http-referrer=https://seirsanduk.online\n'
+        playlist += f'{url}|Referer=https://seirsanduk.online\n'
     return playlist
 
 def extract_m3u8_from_seir(scraper, url, title):
     try:
-        r = scraper.get(url, timeout=15)
+        r = scraper.get(url, timeout=12)
         html = r.text
         
-        # Sayfa içindeki oynatıcı iframe yapılarını tara (jagobd embed sistemleri dahil)
+        # Spor sayfalarındaki TÜM iframe bağlantılarını (Player 1, 2, 3) listeye alıyoruz
         iframes = re.findall(r'<iframe[^>]*src=[\"\']?([^\"\'\s>]+)[\"\']?[^>]*>', html, re.IGNORECASE)
-        if not iframes:
-            # Doğrudan kaynak kodda m3u8 saklıysa al
-            m = re.search(r'(https?://[^\s\"\'<>]*\.m3u8[^\s\"\'<>]*)', html)
-            if m:
-                return (title, m.group(1).replace('\\/', '/'))
-            return None
+        
+        # Eğer sayfada doğrudan m3u8 gizlendiyse ilk aşamada kurtar
+        m_direct = re.search(r'(https?://[^\s\"\'<>]*\.m3u8[^\s\"\'<>]*)', html)
+        if m_direct:
+            return (title, m_direct.group(1).replace('\\/', '/'))
             
+        # Bulunan tüm alternatif player iframelerini sırayla tara (Hatalı olanı atla, çalışan m3u8'i bul)
         for embed_url in iframes:
-            if embed_url.startswith('//'):
-                embed_url = 'https:' + embed_url
-            elif embed_url.startswith('/'):
-                embed_url = 'https://www.seirsanduk.online' + embed_url
+            try:
+                if embed_url.startswith('//'): embed_url = 'https:' + embed_url
+                elif embed_url.startswith('/'): embed_url = 'https://seirsanduk.online' + embed_url
                 
-            # Alt sunucuya giderken kendimizi ana siteden yönlendirilmiş gibi gösteriyoruz (AdBlock Bypass)
-            headers = {
-                'Referer': url,
-                'Origin': 'https://www.seirsanduk.online'
-            }
-            embed_r = scraper.get(embed_url, headers=headers, timeout=12)
-            embed_html = embed_r.text
-            
-            # --- İLK MESAJDAKİ JAGOBD ŞİFRE ÇÖZÜCÜ MEKANİZMASI ---
-            src_match = re.search(r'src:\s*([a-zA-Z0-9_]+)\s*\(\),', embed_html)
-            if src_match:
-                func_name = src_match.group(1)
-                func_match = re.search(rf'function\s+{func_name}\s*\(\)\s*\{{\s*return\s*\(?([^;}}]+)\)?\s*;?', embed_html)
-                if func_match:
-                    expression = func_match.group(1)
-                    base_url = ""
-                    
-                    # Inline dizileri birleştir
-                    arrays = re.findall(r'(\[.*?\])\.join\([\'"][\'"]\)', expression)
-                    for arr in arrays:
-                        try: base_url += "".join(ast.literal_eval(arr))
-                        except: pass
+                embed_r = scraper.get(embed_url, headers={'Referer': url, 'Origin': 'https://seirsanduk.online'}, timeout=8)
+                embed_html = embed_r.text
+                
+                # 1. Aşama: Oynatıcı kodlarının içinde .m3u8 akışı var mı bak
+                m_sub = re.search(r'(https?://[^\s\"\'<>\\#]*\.m3u8[^\s\"\'<>\\#]*)', embed_html)
+                if m_sub:
+                    return (title, m_sub.group(1).replace('\\/', '/'))
+                
+                # 2. Aşama: Gizli span ve şifreli dizileri birleştirme (Klasik JagoBD/SeirSanduk şifresi)
+                src_match = re.search(r'src:\s*([a-zA-Z0-9_]+)\s*\(\),', embed_html)
+                if src_match:
+                    func_name = src_match.group(1)
+                    func_match = re.search(rf'function\s+{func_name}\s*\(\)\s*\{{\s*return\s*\(?([^;}}]+)\)?\s*;?', embed_html)
+                    if func_match:
+                        expression = func_match.group(1)
+                        base_url = ""
                         
-                    # Değişken dizilerini birleştir
-                    var_joins = re.findall(r'([a-zA-Z0-9_]+)\.join\([\'"][\'"]\)', expression)
-                    for var in var_joins:
-                        var_match = re.search(rf'var\s+{var}\s*=\s*(\[.*?\]);', embed_html)
-                        if var_match:
-                            try: base_url += "".join(ast.literal_eval(var_match.group(1)))
-                            except: pass
+                        arrays = re.findall(r'(\[.*?\])\.join\([\'"][\'"]\)', expression)
+                        for arr in arrays: base_url += "".join(ast.literal_eval(arr))
+                        
+                        var_joins = re.findall(r'([a-zA-Z0-9_]+)\.join\([\'"][\'"]\)', expression)
+                        for var in var_joins:
+                            var_match = re.search(rf'var\s+{var}\s*=\s*(\[.*?\]);', embed_html)
+                            if var_match: base_url += "".join(ast.literal_eval(var_match.group(1)))
                             
-                    # Gizli span etiketlerini sök (bieksisrcgtatufneh vb.)
-                    doc_joins = re.findall(r'document\.getElementById\([\'"]([a-zA-Z0-9_]+)[\'"]\)\.innerHTML', expression)
-                    if not doc_joins:
-                        doc_joins = re.findall(r'document\.getElementById\(([a-zA-Z0-9_]+)\)\.innerHTML', expression)
-                        
-                    for span_id in doc_joins:
-                        span_match = re.search(rf'<span[^>]*id=[\'\"]?{span_id}[\'\"]?[^>]*>(.*?)</span>', embed_html)
-                        if span_match:
-                            base_url += span_match.group(1).strip()
+                        doc_joins = re.findall(r'document\.getElementById\([\'"]([a-zA-Z0-9_]+)[\'"]\)\.innerHTML', expression)
+                        for span_id in doc_joins:
+                            span_match = re.search(rf'<span[^>]*id=[\'\"]?{span_id}[\'\"]?[^>]*>(.*?)</span>', embed_html)
+                            if span_match: base_url += span_match.group(1).strip()
                             
-                    if "http" in base_url:
-                        return (title, base_url.replace('\\/', '/'))
-                        
-            # Eğer şifresiz düz m3u8 sızdıysa yakala
-            m_sub = re.search(r'(https?://[^\s\"\'<>\\#]*\.m3u8[^\s\"\'<>\\#]*)', embed_html)
-            if m_sub:
-                return (title, m_sub.group(1).replace('\\/', '/'))
+                        if "http" in base_url:
+                            return (title, base_url.replace('\\/', '/'))
+            except:
+                continue # Bu player butonu bozuksa veya boşsa bir sonrakine geç
         return None
     except:
         return None
 
 if __name__ == '__main__':
-    print("M3U8 Otomatik Güncelleme Sistemi Başlatıldı...")
     m3u8_content = generate_playlist()
-    if m3u8_content and len(m3u8_content) > 10:
+    if m3u8_content:
         with open('playlist.m3u8', 'w', encoding='utf-8') as f:
             f.write(m3u8_content)
-        print(f"\n [BAŞARILI] playlist.m3u8 dosyası yeni sitenin spor kanallarıyla güncellendi.")
-    else:
-        print("\n [HATA] Liste boş kaldığı için dosya üzerine yazılmadı.")
+        print("\n [BAŞARILI] playlist.m3u8 dosyası güncellendi.")
