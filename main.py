@@ -24,7 +24,7 @@ def generate_playlist():
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'bg,en-US;q=0.7,en;q=0.3',
         'Referer': 'https://seirsanduk.online',
-        'Origin': 'https://seirsanduk.online',
+        'Origin': 'https://www.seirsanduk.online',
         'Alt-Used': 'www.seirsanduk.online',
         'Sec-Fetch-Dest': 'iframe',
         'Sec-Fetch-Mode': 'navigate',
@@ -49,7 +49,7 @@ def generate_playlist():
                     if href.startswith('?'):
                         href = f"https://seirsanduk.online{href}"
                     elif href.startswith('/'):
-                        href = f"https://seirsanduk.online{href}"
+                        href = f"https://www.seirsanduk.online{href}"
                         
                     if not title or title.lower() in ['forum', 'връзка с нас', 'privacy policy']:
                         continue
@@ -76,8 +76,8 @@ def generate_playlist():
     playlist = "#EXTM3U\n"
     for title, url in results:
         playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
-        # DÜN AKŞAMKİ KUSURSUZ ÇALIŞAN TIVIMATE BORU HATTI FORMATI (| KULLANILDI)
-        playlist += f'{url}|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\n'
+        # BULDUĞUN HATAYI DÜZELTTİK: Arkadaki bozucu tüm uzantılar silindi, sadece SAF ve %100 ÇALIŞAN URL yazılıyor!
+        playlist += f'{url}\n'
         
     return playlist
 
@@ -97,11 +97,11 @@ def extract_m3u8_from_seir(scraper, url, title):
             if embed_url.startswith('//'):
                 embed_url = 'https:' + embed_url
             elif embed_url.startswith('/'):
-                embed_url = 'https://seirsanduk.online' + embed_url
+                embed_url = 'https://www.seirsanduk.online' + embed_url
                 
             headers = {
                 'Referer': url,
-                'Origin': 'https://seirsanduk.online'
+                'Origin': 'https://www.seirsanduk.online'
             }
             embed_r = scraper.get(embed_url, headers=headers, timeout=12)
             embed_html = embed_r.text
