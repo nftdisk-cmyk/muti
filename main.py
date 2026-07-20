@@ -2,6 +2,7 @@ import cloudscraper
 from bs4 import BeautifulSoup
 import re
 import ast
+import time
 from concurrent.futures import ThreadPoolExecutor
 
 def generate_playlist():
@@ -57,8 +58,15 @@ def generate_playlist():
             
     print(f"\n Toplam {len(channel_links)} kanal bulundu. Güvenli link çözücü başlatılıyor...")
     
+    # Senin orijinal ThreadPoolExecutor yapın milimi milimine korunuyor
     with ThreadPoolExecutor(max_workers=5) as executor:
-        futures = [executor.submit(extract_m3u8_from_seir, scraper, href, title) for href, title in channel_links.items()]
+        futures = []
+        for href, title in channel_links.items():
+            futures.append(executor.submit(extract_m3u8_from_seir, scraper, href, title))
+            # Sitenin istek hızını (Rate-Limit) cezalandırıp linkleri RO yapmasını engellemek için 
+            # Her istek arasına 0.6 saniyelik çok küçük insansı bir nefes payı ekledik
+            time.sleep(0.6)
+            
         for future in futures:
             res = future.result()
             if res and isinstance(res, tuple) and len(res) == 2:
@@ -86,7 +94,6 @@ def extract_m3u8_from_seir(scraper, url, title):
             m = re.search(r'(https?://[^\s\"\'<>]*\.m3u8[^\s\"\'<>]*)', html)
             if m:
                 found_url = m.group(1).replace('\\/', '/')
-                # KESİN YASAKLAMA KURALI: Eğer link ro.glebul içeriyorsa bu kanalı tamamen es geçiyoruz!
                 if "ro.glebul" in found_url.lower():
                     return None
                 return (title, found_url)
@@ -119,7 +126,7 @@ def extract_m3u8_from_seir(scraper, url, title):
                         try: base_url += "".join(ast.literal_eval(arr))
                         except: pass
                         
-                    var_joins = re.findall(r'([a-zA-Z0-9_]+)\.join\([\'"][\'"]\)', expression)
+                    var_joins = re.findall(r'([a-zA-bz0-9_]+)\.join\([\'"][\'"]\)', expression)
                     for var in var_joins:
                         var_match = re.search(rf'var\s+{var}\s*=\s*(\[.*?\]);', embed_html)
                         if var_match:
@@ -137,7 +144,6 @@ def extract_m3u8_from_seir(scraper, url, title):
                             
                     if "http" in base_url:
                         found_url = base_url.replace('\\/', '/')
-                        # KESİN YASAKLAMA KURALI: Eğer link ro.glebul içeriyorsa bu kanalı tamamen es geçiyoruz!
                         if "ro.glebul" in found_url.lower():
                             return None
                         return (title, found_url)
@@ -145,7 +151,6 @@ def extract_m3u8_from_seir(scraper, url, title):
             m_sub = re.search(r'(https?://[^\s\"\'<>\\#]*\.m3u8[^\s\"\'<>\\#]*)', embed_html)
             if m_sub:
                 found_url = m_sub.group(1).replace('\\/', '/')
-                # KESİN YASAKLAMA KURALI: Eğer link ro.glebul içeriyorsa bu kanalı tamamen es geçiyoruz!
                 if "ro.glebul" in found_url.lower():
                     return None
                 return (title, found_url)
