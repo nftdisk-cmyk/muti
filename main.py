@@ -57,12 +57,8 @@ def generate_playlist():
                     if href not in channel_links:
                         channel_links[href] = title.strip()
         except Exception as e:
-            print(f"Kanal listesi çekilirken hata oluştu: {str(e)}")
+            pass
             
-    if not channel_links:
-        print("Hata: Siteden hiçbir kanal bağlantısı ayıklanamadı!")
-        return ""
-        
     print(f"\n Toplam {len(channel_links)} kanal bulundu. Şifre çözücü döngüsü başlatılıyor...")
     
     with ThreadPoolExecutor(max_workers=5) as executor:
@@ -80,7 +76,8 @@ def generate_playlist():
     playlist = "#EXTM3U\n"
     for title, url in results:
         playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
-        playlist += f'{url}|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0\n'
+        # DÜN AKŞAMKİ KUSURSUZ ÇALIŞAN TIVIMATE BORU HATTI FORMATI (| KULLANILDI)
+        playlist += f'{url}|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\n'
         
     return playlist
 
@@ -109,7 +106,6 @@ def extract_m3u8_from_seir(scraper, url, title):
             embed_r = scraper.get(embed_url, headers=headers, timeout=12)
             embed_html = embed_r.text
             
-            # Güncellenen esnek regex: src ve parantez arasındaki boşluk varyasyonları çözüldü
             src_match = re.search(r'src\s*:\s*([a-zA-Z0-9_]+)\s*\(\s*\)\s*,', embed_html)
             if src_match:
                 func_name = src_match.group(1)
@@ -118,13 +114,11 @@ def extract_m3u8_from_seir(scraper, url, title):
                     expression = func_match.group(1)
                     base_url = ""
                     
-                    # 1. Klasik Satır İçi Dizi Birleştirmeleri
                     arrays = re.findall(r'(\[.*?\])\.join\([\'"][\'"]\)', expression)
                     for arr in arrays:
                         try: base_url += "".join(ast.literal_eval(arr))
                         except: pass
                         
-                    # 2. Değişken Tanımlı Dizi Birleştirmeleri
                     var_joins = re.findall(r'([a-zA-Z0-9_]+)\.join\([\'"][\'"]\)', expression)
                     for var in var_joins:
                         var_match = re.search(rf'var\s+{var}\s*=\s*(\[.*?\]);', embed_html)
@@ -132,7 +126,6 @@ def extract_m3u8_from_seir(scraper, url, title):
                             try: base_url += "".join(ast.literal_eval(var_match.group(1)))
                             except: pass
                             
-                    # 3. Gizli Span Elemanlarını Çözme (bieksisrcgtatufneh vb.)
                     doc_joins = re.findall(r'document\.getElementById\([\'"]([a-zA-Z0-9_]+)[\'"]\)\.innerHTML', expression)
                     if not doc_joins:
                         doc_joins = re.findall(r'document\.getElementById\(([a-zA-Z0-9_]+)\)\.innerHTML', expression)
