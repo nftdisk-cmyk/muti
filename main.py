@@ -13,33 +13,57 @@ def generate_playlist():
     results = []
     
     scraper = cloudscraper.create_scraper(
-        browser={'browser': 'chrome', 'platform': 'windows', 'desktop': True}
+        browser={
+            'browser': 'chrome',
+            'platform': 'windows',
+            'desktop': True
+        }
     )
     
     scraper.headers.update({
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'bg,en-US;q=0.7,en;q=0.3',
         'Referer': 'https://seirsanduk.online',
-        'Origin': 'https://seirsanduk.online'
+        'Origin': 'https://seirsanduk.online',
+        'Alt-Used': 'www.seirsanduk.online',
+        'Sec-Fetch-Dest': 'iframe',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'same-origin'
     })
     
-    print("1. Seir Sanduk listesinden tüm kanallar toplanıyor...")
+    print("1. Seir Sanduk platformundan spor ve ulusal kanallar toplanıyor...")
     for cat in categories:
         try:
             r = scraper.get(cat, timeout=15)
-            if r.status_code != 200: continue
+            if r.status_code != 200:
+                continue
+                
             soup = BeautifulSoup(r.text, 'html.parser')
-            for a in soup.find_all('a', href=True):
+            links = soup.find_all('a', href=True)
+            
+            for a in links:
                 href = a['href']
                 if 'id=' in href:
                     title = a.get('title') or a.text.strip()
-                    if href.startswith('?'): href = f"https://seirsanduk.online{href}"
-                    if not title or title.lower() in ['forum', 'връзка с нас', 'privacy policy']: continue
+                    
+                    if href.startswith('?'):
+                        href = f"https://seirsanduk.online{href}"
+                    elif href.startswith('/'):
+                        href = f"https://seirsanduk.online{href}"
+                        
+                    if not title or title.lower() in ['forum', 'връзка с нас', 'privacy policy']:
+                        continue
+                        
                     if href not in channel_links:
                         channel_links[href] = title.strip()
-        except: pass
+        except Exception as e:
+            print(f"Kanal listesi çekilirken hata oluştu: {str(e)}")
+            
+    if not channel_links:
+        print("Hata: Siteden hiçbir kanal bağlantısı ayıklanamadı!")
+        return ""
         
-    print(f"\n Toplam {len(channel_links)} kanal için düzeltilmiş spor çözücü başlatılıyor...")
+    print(f"\n Toplam {len(channel_links)} kanal bulundu. Şifre çözücü döngüsü başlatılıyor...")
     
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = [executor.submit(extract_m3u8_from_seir, scraper, href, title) for href, title in channel_links.items()]
@@ -49,90 +73,88 @@ def generate_playlist():
                 results.append(res)
                 print(f"   🔥 [BAŞARILI] {res} kanalı listeye eklendi.")
                 
+    if not results:
+        print("\n Hata: Kanallar tespit edildi fakat linkler sökülemedi!")
+        return ""
+
     playlist = "#EXTM3U\n"
     for title, url in results:
         playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
         playlist += f'#EXTVLCOPT:http-referrer=https://seirsanduk.online\n'
         playlist += f'{url}|Referer=https://seirsanduk.online\n'
+        
     return playlist
 
 def extract_m3u8_from_seir(scraper, url, title):
     try:
-        r = scraper.get(url, timeout=12)
+        r = scraper.get(url, timeout=15)
         html = r.text
         
-        # Sayfadaki tüm iframe'leri topla
         iframes = re.findall(r'<iframe[^>]*src=[\"\']?([^\"\'\s>]+)[\"\']?[^>]*>', html, re.IGNORECASE)
-        
-        # Reklam tuzaklarını ve sabit bTV iframe'lerini temizleyen akıllı filtre
-        clean_iframes = []
-        for ifr in iframes:
-            # Sitenin yan menüsündeki sabit reklam veya btv oynatıcı iframe'lerini eliyoruz
-            if "btv" in ifr.lower() and "btv" not in title.lower():
-                continue
-            if "guide" in ifr.lower() or "banner" in ifr.lower():
-                continue
-            clean_iframes.append(ifr)
+        if not iframes:
+            m = re.search(r'(https?://[^\s\"\'<>]*\.m3u8[^\s\"\'<>]*)', html)
+            if m:
+                return (title, m.group(1).replace('\\/', '/'))
+            return None
             
-        # Eğer temizlenmiş iframe kalmadıysa ilk bulunanları koru (Güvenlik önlemi)
-        if not clean_iframes:
-            clean_iframes = iframes
-            
-        # 1. Aşama: Sayfa kaynak kodunda doğrudan gizlenmiş m3u8 araması
-        m_direct = re.search(r'(https?://[^\s\"\'<>]*\.m3u8[^\s\"\'<>]*)', html)
-        if m_direct:
-            return (title, m_direct.group(1).replace('\\/', '/'))
-            
-        # 2. Aşama: Sadece kanala ait olan temizlenmiş oynatıcı iframe'lerini sırayla tara
-        for embed_url in clean_iframes:
-            try:
-                if embed_url.startswith('//'): embed_url = 'https:' + embed_url
-                elif embed_url.startswith('/'): embed_url = 'https://seirsanduk.online' + embed_url
+        for embed_url in iframes:
+            if embed_url.startswith('//'):
+                embed_url = 'https:' + embed_url
+            elif embed_url.startswith('/'):
+                embed_url = 'https://seirsanduk.online' + embed_url
                 
-                embed_r = scraper.get(embed_url, headers={'Referer': url, 'Origin': 'https://seirsanduk.online'}, timeout=8)
-                embed_html = embed_r.text
-                
-                # Şifreli kod bloklarını birleştiren JavaScript çözücü mekanizması
-                src_match = re.search(r'src:\s*([a-zA-Z0-9_]+)\s*\(\),', embed_html)
-                if src_match:
-                    func_name = src_match.group(1)
-                    func_match = re.search(rf'function\s+{func_name}\s*\(\)\s*\{{\s*return\s*\(?([^;}}]+)\)?\s*;?', embed_html)
-                    if func_match:
-                        expression = func_match.group(1)
-                        base_url = ""
+            headers = {
+                'Referer': url,
+                'Origin': 'https://seirsanduk.online'
+            }
+            embed_r = scraper.get(embed_url, headers=headers, timeout=12)
+            embed_html = embed_r.text
+            
+            src_match = re.search(r'src:\s*([a-zA-Z0-9_]+)\s*\(\),', embed_html)
+            if src_match:
+                func_name = src_match.group(1)
+                func_match = re.search(rf'function\s+{func_name}\s*\(\)\s*\{{\s*return\s*\(?([^;}}]+)\)?\s*;?', embed_html)
+                if func_match:
+                    expression = func_match.group(1)
+                    base_url = ""
+                    
+                    arrays = re.findall(r'(\[.*?\])\.join\([\'"][\'"]\)', expression)
+                    for arr in arrays:
+                        try: base_url += "".join(ast.literal_eval(arr))
+                        except: pass
                         
-                        arrays = re.findall(r'(\[.*?\])\.join\([\'"][\'"]\)', expression)
-                        for arr in arrays: base_url += "".join(ast.literal_eval(arr))
+                    var_joins = re.findall(r'([a-zA-Z0-9_]+)\.join\([\'"][\'"]\)', expression)
+                    for var in var_joins:
+                        var_match = re.search(rf'var\s+{var}\s*=\s*(\[.*?\]);', embed_html)
+                        if var_match:
+                            try: base_url += "".join(ast.literal_eval(var_match.group(1)))
+                            except: pass
+                            
+                    doc_joins = re.findall(r'document\.getElementById\([\'"]([a-zA-Z0-9_]+)[\'"]\)\.innerHTML', expression)
+                    if not doc_joins:
+                        doc_joins = re.findall(r'document\.getElementById\(([a-zA-Z0-9_]+)\)\.innerHTML', expression)
                         
-                        var_joins = re.findall(r'([a-zA-Z0-9_]+)\.join\([\'"][\'"]\)', expression)
-                        for var in var_joins:
-                            var_match = re.search(rf'var\s+{var}\s*=\s*(\[.*?\]);', embed_html)
-                            if var_match: base_url += "".join(ast.literal_eval(var_match.group(1)))
+                    for span_id in doc_joins:
+                        span_match = re.search(rf'<span[^>]*id=[\'\"]?{span_id}[\'\"]?[^>]*>(.*?)</span>', embed_html)
+                        if span_match:
+                            base_url += span_match.group(1).strip()
                             
-                        doc_joins = re.findall(r'document\.getElementById\([\'"]([a-zA-Z0-9_]+)[\'"]\)\.innerHTML', expression)
-                        if not doc_joins:
-                            doc_joins = re.findall(r'document\.getElementById\(([a-zA-Z0-9_]+)\)\.innerHTML', expression)
-                            
-                        for span_id in doc_joins:
-                            span_match = re.search(rf'<span[^>]*id=[\'\"]?{span_id}[\'\"]?[^>]*>(.*?)</span>', embed_html)
-                            if span_match: base_url += span_match.group(1).strip()
-                            
-                        if "http" in base_url:
-                            return (title, base_url.replace('\\/', '/'))
-                            
-                # Kodların içinde ham sızan m3u8 varsa yakala
-                m_sub = re.search(r'(https?://[^\s\"\'<>\\#]*\.m3u8[^\s\"\'<>\\#]*)', embed_html)
-                if m_sub:
-                    return (title, m_sub.group(1).replace('\\/', '/'))
-            except:
-                continue
+                    if "http" in base_url:
+                        return (title, base_url.replace('\\/', '/'))
+                        
+            m_sub = re.search(r'(https?://[^\s\"\'<>\\#]*\.m3u8[^\s\"\'<>\\#]*)', embed_html)
+            if m_sub:
+                return (title, m_sub.group(1).replace('\\/', '/'))
         return None
     except:
         return None
 
 if __name__ == '__main__':
+    print("M3U8 Otomatik Güncelleme Sistemi Başlatıldı...")
     m3u8_content = generate_playlist()
-    if m3u8_content:
+    if m3u8_content and len(m3u8_content) > 10:
         with open('playlist.m3u8', 'w', encoding='utf-8') as f:
             f.write(m3u8_content)
-        print("\n [BAŞARILI] playlist.m3u8 dosyası hatasız güncellendi.")
+        print(f"\n [BAŞARILI] playlist.m3u8 dosyası yeni sitenin spor kanallarıyla güncellendi.")
+    else:
+        print("\n [HATA] Liste boş kaldı, dosya güncellenmedi.")
