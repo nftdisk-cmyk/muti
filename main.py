@@ -58,14 +58,12 @@ def generate_playlist():
             
     print(f"\n Toplam {len(channel_links)} kanal bulundu. Güvenli link çözücü başlatılıyor...")
     
-    # Senin orijinal ThreadPoolExecutor yapın milimi milimine korunuyor
+    # 5'li gruplar halinde hızlı ve kararlı tarama
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = []
         for href, title in channel_links.items():
             futures.append(executor.submit(extract_m3u8_from_seir, scraper, href, title))
-            # Sitenin istek hızını (Rate-Limit) cezalandırıp linkleri RO yapmasını engellemek için 
-            # Her istek arasına 0.6 saniyelik çok küçük insansı bir nefes payı ekledik
-            time.sleep(0.6)
+            time.sleep(0.6) # Cezalandırılmamak için küçük nefes payı
             
         for future in futures:
             res = future.result()
@@ -80,7 +78,13 @@ def generate_playlist():
     playlist = "#EXTM3U\n"
     for title, url in results:
         playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
-        playlist += f'{url}\n'
+        
+        # ARTIK KANALLARI SİLMİYORUZ: ro link gelirse arkasına TiviMate'in kalkanı kıracağı sihirli boru hattını ekliyoruz!
+        if "ro.glebul" in url.lower():
+            playlist += f'{url}|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3\n'
+        else:
+            # Standart temiz cdn3 linkleri doğrudan yazılıyor
+            playlist += f'{url}\n'
         
     return playlist
 
@@ -93,10 +97,7 @@ def extract_m3u8_from_seir(scraper, url, title):
         if not iframe_match:
             m = re.search(r'(https?://[^\s\"\'<>]*\.m3u8[^\s\"\'<>]*)', html)
             if m:
-                found_url = m.group(1).replace('\\/', '/')
-                if "ro.glebul" in found_url.lower():
-                    return None
-                return (title, found_url)
+                return (title, m.group(1).replace('\\/', '/'))
             return None
             
         for embed_url in iframe_match.groups():
@@ -126,7 +127,7 @@ def extract_m3u8_from_seir(scraper, url, title):
                         try: base_url += "".join(ast.literal_eval(arr))
                         except: pass
                         
-                    var_joins = re.findall(r'([a-zA-bz0-9_]+)\.join\([\'"][\'"]\)', expression)
+                    var_joins = re.findall(r'([a-zA-Z0-9_]+)\.join\([\'"][\'"]\)', expression)
                     for var in var_joins:
                         var_match = re.search(rf'var\s+{var}\s*=\s*(\[.*?\]);', embed_html)
                         if var_match:
@@ -143,17 +144,11 @@ def extract_m3u8_from_seir(scraper, url, title):
                             base_url += span_match.group(1).strip()
                             
                     if "http" in base_url:
-                        found_url = base_url.replace('\\/', '/')
-                        if "ro.glebul" in found_url.lower():
-                            return None
-                        return (title, found_url)
+                        return (title, base_url.replace('\\/', '/'))
                         
             m_sub = re.search(r'(https?://[^\s\"\'<>\\#]*\.m3u8[^\s\"\'<>\\#]*)', embed_html)
             if m_sub:
-                found_url = m_sub.group(1).replace('\\/', '/')
-                if "ro.glebul" in found_url.lower():
-                    return None
-                return (title, found_url)
+                return (title, m_sub.group(1).replace('\\/', '/'))
         return None
     except:
         return None
@@ -165,5 +160,3 @@ if __name__ == '__main__':
         with open('playlist.m3u8', 'w', encoding='utf-8') as f:
             f.write(m3u8_content)
         print(f"\n [BAŞARILI] playlist.m3u8 dosyası güncellendi.")
-    else:
-        print("\n [HATA] Liste boş kaldı, dosya güncellenmedi.")

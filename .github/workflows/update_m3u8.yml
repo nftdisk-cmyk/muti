@@ -1,7 +1,11 @@
 name: Update M3U8 Playlist
 
 on:
-  workflow_dispatch: # Sadece sen istersen siteden çalışır, push atınca veya 20 dakikada bir kendi kendine ASLA çalışmaz!
+  push:
+    branches: [ master, main ]
+  schedule:
+    - cron: '*/20 * * * *'  # BİLGİSAYAR KAPALI OLSA BİLE 20 DAKİKADA BİR OTOMATİK ÇALIŞTIRMA AYARI
+  workflow_dispatch:
 
 jobs:
   build:
@@ -32,5 +36,5 @@ jobs:
         git config --global user.email 'github-actions[bot]@://github.com'
         if [ -f playlist.m3u8 ]; then
           git add playlist.m3u8
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Manual update playlist.m3u8" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update playlist.m3u8" && git push)
         fi
