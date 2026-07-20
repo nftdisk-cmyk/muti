@@ -57,8 +57,12 @@ def generate_playlist():
                     if href not in channel_links:
                         channel_links[href] = title.strip()
         except Exception as e:
-            pass
+            print(f"Kanal listesi çekilirken hata oluştu: {str(e)}")
             
+    if not channel_links:
+        print("Hata: Siteden hiçbir kanal bağlantısı ayıklanamadı!")
+        return ""
+        
     print(f"\n Toplam {len(channel_links)} kanal bulundu. Şifre çözücü döngüsü başlatılıyor...")
     
     with ThreadPoolExecutor(max_workers=5) as executor:
@@ -67,17 +71,15 @@ def generate_playlist():
             res = future.result()
             if res and isinstance(res, tuple) and len(res) == 2:
                 results.append(res)
-                print(f"   🔥 [BAŞARILI] {res} kanalı listeye eklendi.")
+                print(f"   🔥 [BAŞARILI] {res} kanalı ve m3u8 şifresi kırıldı.")
                 
     if not results:
-        print("\n Hata: Linkler sökülemedi!")
+        print("\n Hata: Kanallar bulundu fakat linkler sökülemedi!")
         return ""
 
-    # TIVIMATE'IN ŞİFRESİNİ ÇÖZDÜĞÜ O ESKİ KUSURSUZ FORMAT
     playlist = "#EXTM3U\n"
     for title, url in results:
         playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
-        # TiviMate'e referer'ı doğrudan linkin arkasında paslayan o meşhur düz çizgi yapısı düzeltildi
         playlist += f'{url}|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0\n'
         
     return playlist
@@ -87,14 +89,14 @@ def extract_m3u8_from_seir(scraper, url, title):
         r = scraper.get(url, timeout=15)
         html = r.text
         
-        iframes = re.findall(r'<iframe[^>]*src=[\"\']?([^\"\'\s>]+)[\"\']?[^>]*>', html, re.IGNORECASE)
-        if not iframes:
+        iframe_match = re.search(r'<iframe[^>]*src=[\"\']?([^\"\'\s>]+)[\"\']?[^>]*>', html, re.IGNORECASE)
+        if not iframe_match:
             m = re.search(r'(https?://[^\s\"\'<>]*\.m3u8[^\s\"\'<>]*)', html)
             if m:
                 return (title, m.group(1).replace('\\/', '/'))
             return None
             
-        for embed_url in iframes:
+        for embed_url in iframe_match.groups():
             if embed_url.startswith('//'):
                 embed_url = 'https:' + embed_url
             elif embed_url.startswith('/'):
@@ -107,7 +109,8 @@ def extract_m3u8_from_seir(scraper, url, title):
             embed_r = scraper.get(embed_url, headers=headers, timeout=12)
             embed_html = embed_r.text
             
-            src_match = re.search(r'src:\s*([a-zA-Z0-9_]+)\s*\(\),', embed_html)
+            # Güncellenen esnek regex: src ve parantez arasındaki boşluk varyasyonları çözüldü
+            src_match = re.search(r'src\s*:\s*([a-zA-Z0-9_]+)\s*\(\s*\)\s*,', embed_html)
             if src_match:
                 func_name = src_match.group(1)
                 func_match = re.search(rf'function\s+{func_name}\s*\(\)\s*\{{\s*return\s*\(?([^;}}]+)\)?\s*;?', embed_html)
@@ -115,11 +118,13 @@ def extract_m3u8_from_seir(scraper, url, title):
                     expression = func_match.group(1)
                     base_url = ""
                     
+                    # 1. Klasik Satır İçi Dizi Birleştirmeleri
                     arrays = re.findall(r'(\[.*?\])\.join\([\'"][\'"]\)', expression)
                     for arr in arrays:
                         try: base_url += "".join(ast.literal_eval(arr))
                         except: pass
                         
+                    # 2. Değişken Tanımlı Dizi Birleştirmeleri
                     var_joins = re.findall(r'([a-zA-Z0-9_]+)\.join\([\'"][\'"]\)', expression)
                     for var in var_joins:
                         var_match = re.search(rf'var\s+{var}\s*=\s*(\[.*?\]);', embed_html)
@@ -127,6 +132,7 @@ def extract_m3u8_from_seir(scraper, url, title):
                             try: base_url += "".join(ast.literal_eval(var_match.group(1)))
                             except: pass
                             
+                    # 3. Gizli Span Elemanlarını Çözme (bieksisrcgtatufneh vb.)
                     doc_joins = re.findall(r'document\.getElementById\([\'"]([a-zA-Z0-9_]+)[\'"]\)\.innerHTML', expression)
                     if not doc_joins:
                         doc_joins = re.findall(r'document\.getElementById\(([a-zA-Z0-9_]+)\)\.innerHTML', expression)
@@ -153,3 +159,5 @@ if __name__ == '__main__':
         with open('playlist.m3u8', 'w', encoding='utf-8') as f:
             f.write(m3u8_content)
         print(f"\n [BAŞARILI] playlist.m3u8 dosyası güncellendi.")
+    else:
+        print("\n [HATA] Liste boş kaldı, dosya güncellenmedi.")
