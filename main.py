@@ -20,17 +20,14 @@ def generate_playlist():
         }
     )
     
-    # Sitenin en çok dikkat ettiği tarayıcı dil ve oturum kimlikleri ana kurala eklendi
     scraper.headers.update({
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
         'Accept-Language': 'bg,en-US;q=0.7,en;q=0.3',
         'Referer': 'https://seirsanduk.online',
-        'Origin': 'https://seirsanduk.online',
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1'
+        'Origin': 'https://seirsanduk.online'
     })
     
-    print("1. Seir Sanduk ana listesinden tüm kanallar toplanıyor...")
+    print("1. Seir Sanduk listesinden tüm kanallar toplanıyor...")
     for cat in categories:
         try:
             r = scraper.get(cat, timeout=15)
@@ -58,7 +55,7 @@ def generate_playlist():
         except Exception:
             pass
             
-    print(f"\n Toplam {len(channel_links)} kanal bulundu. ro.glebul.com çözücü başlatılıyor...")
+    print(f"\n Toplam {len(channel_links)} kanal bulundu. Güvenli link çözücü başlatılıyor...")
     
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = [executor.submit(extract_m3u8_from_seir, scraper, href, title) for href, title in channel_links.items()]
@@ -66,10 +63,10 @@ def generate_playlist():
             res = future.result()
             if res and isinstance(res, tuple) and len(res) == 2:
                 results.append(res)
-                print(f"   🔥 [BAŞARILI] {res} kanalı canlı oturum linki söküldü.")
+                print(f"   🔥 [BAŞARILI] {res} kanalı listeye güvenle işlendi.")
                 
     if not results:
-        print("\n Hata: Çerez doğrulaması başarısız oldu!")
+        print("\n Hata: Filtreye uygun çalışan hiçbir link bulunamadı!")
         return ""
 
     playlist = "#EXTM3U\n"
@@ -88,7 +85,11 @@ def extract_m3u8_from_seir(scraper, url, title):
         if not iframe_match:
             m = re.search(r'(https?://[^\s\"\'<>]*\.m3u8[^\s\"\'<>]*)', html)
             if m:
-                return (title, m.group(1).replace('\\/', '/'))
+                found_url = m.group(1).replace('\\/', '/')
+                # KESİN YASAKLAMA KURALI: Eğer link ro.glebul içeriyorsa bu kanalı tamamen es geçiyoruz!
+                if "ro.glebul" in found_url.lower():
+                    return None
+                return (title, found_url)
             return None
             
         for embed_url in iframe_match.groups():
@@ -97,16 +98,11 @@ def extract_m3u8_from_seir(scraper, url, title):
             elif embed_url.startswith('/'):
                 embed_url = 'https://seirsanduk.online' + embed_url
                 
-            # BULDUĞUN SORUNUN ÇÖZÜMÜ: Ana sitenin tüm çerezlerini (cookies) ro.glebul sunucusuna zorla taşıyoruz!
             embed_headers = {
                 'Referer': url,
                 'Origin': 'https://seirsanduk.online',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                'Accept-Language': 'bg,en-US;q=0.7,en;q=0.3',
-                'Accept': '*/*'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             }
-            
-            # İstek atarken mevcut tarayıcı oturumunu (session) bozmadan devam ediyoruz
             embed_r = scraper.get(embed_url, headers=embed_headers, timeout=12)
             embed_html = embed_r.text
             
@@ -140,11 +136,19 @@ def extract_m3u8_from_seir(scraper, url, title):
                             base_url += span_match.group(1).strip()
                             
                     if "http" in base_url:
-                        return (title, base_url.replace('\\/', '/'))
+                        found_url = base_url.replace('\\/', '/')
+                        # KESİN YASAKLAMA KURALI: Eğer link ro.glebul içeriyorsa bu kanalı tamamen es geçiyoruz!
+                        if "ro.glebul" in found_url.lower():
+                            return None
+                        return (title, found_url)
                         
             m_sub = re.search(r'(https?://[^\s\"\'<>\\#]*\.m3u8[^\s\"\'<>\\#]*)', embed_html)
             if m_sub:
-                return (title, m_sub.group(1).replace('\\/', '/'))
+                found_url = m_sub.group(1).replace('\\/', '/')
+                # KESİN YASAKLAMA KURALI: Eğer link ro.glebul içeriyorsa bu kanalı tamamen es geçiyoruz!
+                if "ro.glebul" in found_url.lower():
+                    return None
+                return (title, found_url)
         return None
     except:
         return None
