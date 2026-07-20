@@ -57,12 +57,8 @@ def generate_playlist():
                     if href not in channel_links:
                         channel_links[href] = title.strip()
         except Exception as e:
-            print(f"Kanal listesi çekilirken hata oluştu: {str(e)}")
+            pass
             
-    if not channel_links:
-        print("Hata: Siteden hiçbir kanal bağlantısı ayıklanamadı!")
-        return ""
-        
     print(f"\n Toplam {len(channel_links)} kanal bulundu. Şifre çözücü döngüsü başlatılıyor...")
     
     with ThreadPoolExecutor(max_workers=5) as executor:
@@ -74,14 +70,15 @@ def generate_playlist():
                 print(f"   🔥 [BAŞARILI] {res} kanalı listeye eklendi.")
                 
     if not results:
-        print("\n Hata: Kanallar tespit edildi fakat linkler sökülemedi!")
+        print("\n Hata: Linkler sökülemedi!")
         return ""
 
+    # TIVIMATE'IN ŞİFRESİNİ ÇÖZDÜĞÜ O ESKİ KUSURSUZ FORMAT
     playlist = "#EXTM3U\n"
     for title, url in results:
         playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
-        playlist += f'#EXTVLCOPT:http-referrer=https://seirsanduk.online\n'
-        playlist += f'{url}|Referer=https://seirsanduk.online\n'
+        # TiviMate'e referer'ı doğrudan linkin arkasında paslayan o meşhur düz çizgi yapısı düzeltildi
+        playlist += f'{url}|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0\n'
         
     return playlist
 
@@ -155,6 +152,4 @@ if __name__ == '__main__':
     if m3u8_content and len(m3u8_content) > 10:
         with open('playlist.m3u8', 'w', encoding='utf-8') as f:
             f.write(m3u8_content)
-        print(f"\n [BAŞARILI] playlist.m3u8 dosyası yeni sitenin spor kanallarıyla güncellendi.")
-    else:
-        print("\n [HATA] Liste boş kaldı, dosya güncellenmedi.")
+        print(f"\n [BAŞARILI] playlist.m3u8 dosyası güncellendi.")

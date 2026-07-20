@@ -1,205 +1,137 @@
 #EXTM3U
 #EXTINF:-1 tvg-id="" tvg-name="BNT 1 HD" tvg-logo="" group-title="SeirSanduk",BNT 1 HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-bnt-1-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-bnt-1-hd/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="BNT 2" tvg-logo="" group-title="SeirSanduk",BNT 2
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/bnt-2/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/bnt-2/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="BNT 3 HD" tvg-logo="" group-title="SeirSanduk",BNT 3 HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-bnt-3-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-bnt-3-hd/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="BNT 4" tvg-logo="" group-title="SeirSanduk",BNT 4
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/bnt-4/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/bnt-4/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="NOVA TV HD" tvg-logo="" group-title="SeirSanduk",NOVA TV HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-nova-tv-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-nova-tv-hd/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="BTV HD" tvg-logo="" group-title="SeirSanduk",BTV HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-btv-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-btv-hd/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="BTV ACTION HD" tvg-logo="" group-title="SeirSanduk",BTV ACTION HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-btv-action-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-btv-action-hd/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="BTV CINEMA" tvg-logo="" group-title="SeirSanduk",BTV CINEMA
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/btv-cinema/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/btv-cinema/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="BTV COMEDY HD" tvg-logo="" group-title="SeirSanduk",BTV COMEDY HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-btv-comedy-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-btv-comedy-hd/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="BTV STORY" tvg-logo="" group-title="SeirSanduk",BTV STORY
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/btv-story/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/btv-story/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="BULGARIA ON AIR" tvg-logo="" group-title="SeirSanduk",BULGARIA ON AIR
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/bulgaria-on-air/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/bulgaria-on-air/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="CARTOON NETWORK" tvg-logo="" group-title="SeirSanduk",CARTOON NETWORK
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/cartoon-network/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/cartoon-network/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="CITY TV" tvg-logo="" group-title="SeirSanduk",CITY TV
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/city-tv/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/city-tv/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="CODE FASHION TV HD" tvg-logo="" group-title="SeirSanduk",CODE FASHION TV HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-code-fashion-tv-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-code-fashion-tv-hd/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="DIEMA FAMILY HD" tvg-logo="" group-title="SeirSanduk",DIEMA FAMILY HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-diema-family-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-diema-family-hd/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="DIEMA SPORT HD" tvg-logo="" group-title="SeirSanduk",DIEMA SPORT HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-diema-sport-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-diema-sport-hd/index.m3u8?e=1784538033&hash=xaZcgVcKd2D_EkRxSnWiAA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="DIEMA SPORT 2 HD" tvg-logo="" group-title="SeirSanduk",DIEMA SPORT 2 HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-diema-sport-2-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-diema-sport-2-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="DIEMA SPORT 3 HD" tvg-logo="" group-title="SeirSanduk",DIEMA SPORT 3 HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-diema-sport-3-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-diema-sport-3-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="DIEMA HD" tvg-logo="" group-title="SeirSanduk",DIEMA HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-diema-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-diema-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="DISNEY CHANNEL" tvg-logo="" group-title="SeirSanduk",DISNEY CHANNEL
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/disney-channel/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/disney-channel/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="DISCOVERY CHANNEL HD" tvg-logo="" group-title="SeirSanduk",DISCOVERY CHANNEL HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-discovery-channel-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-discovery-channel-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="DSTV" tvg-logo="" group-title="SeirSanduk",DSTV
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/dstv/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/dstv/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="E KIDS" tvg-logo="" group-title="SeirSanduk",E KIDS
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/e-kids/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/e-kids/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="EPIC DRAMA HD" tvg-logo="" group-title="SeirSanduk",EPIC DRAMA HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-epic-drama-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-epic-drama-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="EUROSPORT 1 HD" tvg-logo="" group-title="SeirSanduk",EUROSPORT 1 HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-eurosport-1-hd/index.m3u8?e=1784537430&hash=xMJyiayD4IalMhxMwJ2ESA|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-eurosport-1-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="EUROSPORT 2 HD" tvg-logo="" group-title="SeirSanduk",EUROSPORT 2 HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-eurosport-2-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-eurosport-2-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="EURONEWS BULGARIA HD" tvg-logo="" group-title="SeirSanduk",EURONEWS BULGARIA HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-euronews-bulgaria-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-euronews-bulgaria-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="EVROKOM" tvg-logo="" group-title="SeirSanduk",EVROKOM
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/evrokom/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/evrokom/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="FOLKLOR TV" tvg-logo="" group-title="SeirSanduk",FOLKLOR TV
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/folklor-tv/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/folklor-tv/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="FOOD NETWORK HD" tvg-logo="" group-title="SeirSanduk",FOOD NETWORK HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-food-network-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-food-network-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="STAR CRIME HD" tvg-logo="" group-title="SeirSanduk",STAR CRIME HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-star-crime-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-star-crime-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="STAR CHANNEL HD" tvg-logo="" group-title="SeirSanduk",STAR CHANNEL HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-star-channel-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-star-channel-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="STAR LIFE HD" tvg-logo="" group-title="SeirSanduk",STAR LIFE HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-star-life-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-star-life-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="ID XTRA HD" tvg-logo="" group-title="SeirSanduk",ID XTRA HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-id-xtra-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-id-xtra-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="KANAL 3" tvg-logo="" group-title="SeirSanduk",KANAL 3
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/kanal-3/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/kanal-3/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="KINO NOVA HD" tvg-logo="" group-title="SeirSanduk",KINO NOVA HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-kino-nova-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-kino-nova-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="MAX SPORT 1 HD" tvg-logo="" group-title="SeirSanduk",MAX SPORT 1 HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-max-sport-1-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-max-sport-1-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="MAX SPORT 2 HD" tvg-logo="" group-title="SeirSanduk",MAX SPORT 2 HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-max-sport-2-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-max-sport-2-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="MAX SPORT 3 HD" tvg-logo="" group-title="SeirSanduk",MAX SPORT 3 HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-max-sport-3-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-max-sport-3-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="MAX SPORT 4 HD" tvg-logo="" group-title="SeirSanduk",MAX SPORT 4 HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-max-sport-4-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-max-sport-4-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="NAT GEO HD" tvg-logo="" group-title="SeirSanduk",NAT GEO HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-nat-geo-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-nat-geo-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="NAT GEO WILD HD" tvg-logo="" group-title="SeirSanduk",NAT GEO WILD HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-nat-geo-wild-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-nat-geo-wild-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="NICK JR" tvg-logo="" group-title="SeirSanduk",NICK JR
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/nick-jr/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/nick-jr/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="NICKELODEON" tvg-logo="" group-title="SeirSanduk",NICKELODEON
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/nickelodeon/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/nickelodeon/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="NICKTOONS" tvg-logo="" group-title="SeirSanduk",NICKTOONS
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/nicktoons/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/nicktoons/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="NOVA NEWS HD" tvg-logo="" group-title="SeirSanduk",NOVA NEWS HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-nova-news-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-nova-news-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="NOVA SPORT HD" tvg-logo="" group-title="SeirSanduk",NOVA SPORT HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-nova-sport-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-nova-sport-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="PLANETA FOLK" tvg-logo="" group-title="SeirSanduk",PLANETA FOLK
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/planeta-folk/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/planeta-folk/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="PLANETA HD" tvg-logo="" group-title="SeirSanduk",PLANETA HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-planeta-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-planeta-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="RING BG HD" tvg-logo="" group-title="SeirSanduk",RING BG HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-ring-bg-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-ring-bg-hd/index.m3u8?e=1784538034&hash=9tJyqLDNKgcF3asfsvavRA|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="RODINA TV" tvg-logo="" group-title="SeirSanduk",RODINA TV
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/rodina-tv/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/rodina-tv/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="78 TV HD" tvg-logo="" group-title="SeirSanduk",78 TV HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-78-tv-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-78-tv-hd/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="SKAT" tvg-logo="" group-title="SeirSanduk",SKAT
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/skat/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/skat/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="THE VOICE" tvg-logo="" group-title="SeirSanduk",THE VOICE
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/the-voice/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/the-voice/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="TIANKOV TV" tvg-logo="" group-title="SeirSanduk",TIANKOV TV
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/tiankov-tv/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/tiankov-tv/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="TLC" tvg-logo="" group-title="SeirSanduk",TLC
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/tlc/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/tlc/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="TRAVEL CHANNEL HD" tvg-logo="" group-title="SeirSanduk",TRAVEL CHANNEL HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn11.glebul.com/hls/hd-travel-channel-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/hd-travel-channel-hd/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="TRAVEL TV" tvg-logo="" group-title="SeirSanduk",TRAVEL TV
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/travel-tv/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn11.glebul.com/hls/travel-tv/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="VIASAT EXPLORE HD" tvg-logo="" group-title="SeirSanduk",VIASAT EXPLORE HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-viasat-explore-hd/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-viasat-explore-hd/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="VTK" tvg-logo="" group-title="SeirSanduk",VTK
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/vtk/index.m3u8?e=1784537431&hash=i3NhShmJHKYyM8KDmDK7lQ|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/vtk/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="24 KITCHEN HD" tvg-logo="" group-title="SeirSanduk",24 KITCHEN HD
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/hd-24-kitchen-hd/index.m3u8?e=1784537432&hash=7dPZSc20QE7YEl8o79Tbvw|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/hd-24-kitchen-hd/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="AXN" tvg-logo="" group-title="SeirSanduk",AXN
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/axn/index.m3u8?e=1784537432&hash=7dPZSc20QE7YEl8o79Tbvw|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/axn/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="AXN BLACK" tvg-logo="" group-title="SeirSanduk",AXN BLACK
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/axn-black/index.m3u8?e=1784537432&hash=7dPZSc20QE7YEl8o79Tbvw|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/axn-black/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="AXN WHITE" tvg-logo="" group-title="SeirSanduk",AXN WHITE
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/axn-white/index.m3u8?e=1784537432&hash=7dPZSc20QE7YEl8o79Tbvw|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/axn-white/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="BLOOMBERG TV" tvg-logo="" group-title="SeirSanduk",BLOOMBERG TV
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://cdn3.glebul.com/hls/bloomberg-tv/index.m3u8?e=1784537432&hash=7dPZSc20QE7YEl8o79Tbvw|Referer=https://seirsanduk.online
+https://cdn3.glebul.com/hls/bloomberg-tv/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="Player 1" tvg-logo="" group-title="SeirSanduk",Player 1
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://mx86.glebul.com/hlsfhd/hd-btv-hd.m3u8?e=1784537432&hash=7dPZSc20QE7YEl8o79Tbvw|Referer=https://seirsanduk.online
+https://mx86.glebul.com/hlsfhd/hd-btv-hd.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="Player 2" tvg-logo="" group-title="SeirSanduk",Player 2
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://ssdraid.glebul.com/hls/hd-btv-hd/index.m3u8?e=1784537432&hash=7dPZSc20QE7YEl8o79Tbvw|Referer=https://seirsanduk.online
+https://ssdraid.glebul.com/hls/hd-btv-hd/index.m3u8?e=1784538035&hash=DxRw50CBzNGvxGH83Uas0Q|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
 #EXTINF:-1 tvg-id="" tvg-name="Player 3" tvg-logo="" group-title="SeirSanduk",Player 3
-#EXTVLCOPT:http-referrer=https://seirsanduk.online
-https://raid0.glebul.com:8443/dvr/hd-btv-hd/tracks-v1a1/rewind-86400.m3u8?token=1a40a75063012470be0e624d168e1f42db5b6bb9-70f71c769f138755bc268e8db02b9d68-1784540732-1784529932|Referer=https://seirsanduk.online
+https://raid0.glebul.com:8443/dvr/hd-btv-hd/tracks-v1a1/rewind-86400.m3u8?token=b664caae3d87c277b5efb5bbde1269db8a3338fe-86e6e6a6a73f515a98c4351cd0416529-1784541335-1784530535|Referer=https://seirsanduk.online&User-Agent=Mozilla/5.0
