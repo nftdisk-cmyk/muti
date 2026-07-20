@@ -12,6 +12,7 @@ def generate_playlist():
     channel_links = {}
     results = []
     
+    # Oturum çerezlerini canlı saklayan gelişmiş scraper yapısı
     scraper = cloudscraper.create_scraper(
         browser={
             'browser': 'chrome',
@@ -21,17 +22,15 @@ def generate_playlist():
     )
     
     scraper.headers.update({
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
         'Accept-Language': 'bg,en-US;q=0.7,en;q=0.3',
         'Referer': 'https://seirsanduk.online',
-        'Origin': 'https://www.seirsanduk.online',
-        'Alt-Used': 'www.seirsanduk.online',
-        'Sec-Fetch-Dest': 'iframe',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'same-origin'
+        'Origin': 'https://seirsanduk.online',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1'
     })
     
-    print("1. Seir Sanduk platformundan spor ve ulusal kanallar toplanıyor...")
+    print("1. Seir Sanduk ana listesinden tüm kanallar toplanıyor...")
     for cat in categories:
         try:
             r = scraper.get(cat, timeout=15)
@@ -49,40 +48,41 @@ def generate_playlist():
                     if href.startswith('?'):
                         href = f"https://seirsanduk.online{href}"
                     elif href.startswith('/'):
-                        href = f"https://www.seirsanduk.online{href}"
+                        href = f"https://seirsanduk.online{href}"
                         
                     if not title or title.lower() in ['forum', 'връзка с нас', 'privacy policy']:
                         continue
                         
                     if href not in channel_links:
                         channel_links[href] = title.strip()
-        except Exception as e:
+        except Exception:
             pass
             
-    print(f"\n Toplam {len(channel_links)} kanal bulundu. Şifre çözücü döngüsü başlatılıyor...")
+    print(f"\n Toplam {len(channel_links)} kanal bulundu. Oturum kilitli spor çözücü başlatılıyor...")
     
+    # Havuz tarama hızını, sitenin çerezleri kaçırmaması için dengeli tutuyoruz
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = [executor.submit(extract_m3u8_from_seir, scraper, href, title) for href, title in channel_links.items()]
         for future in futures:
             res = future.result()
             if res and isinstance(res, tuple) and len(res) == 2:
                 results.append(res)
-                print(f"   🔥 [BAŞARILI] {res} kanalı ve m3u8 şifresi kırıldı.")
+                print(f"   🔥 [BAŞARILI] {res} kanalı canlı oturum linki söküldü.")
                 
     if not results:
-        print("\n Hata: Kanallar bulundu fakat linkler sökülemedi!")
+        print("\n Hata: Çerez doğrulaması başarısız oldu!")
         return ""
 
     playlist = "#EXTM3U\n"
     for title, url in results:
         playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
-        # BULDUĞUN HATAYI DÜZELTTİK: Arkadaki bozucu tüm uzantılar silindi, sadece SAF ve %100 ÇALIŞAN URL yazılıyor!
         playlist += f'{url}\n'
         
     return playlist
 
 def extract_m3u8_from_seir(scraper, url, title):
     try:
+        # Oturum çerezlerini koruyarak kanal sayfasına gidiyoruz
         r = scraper.get(url, timeout=15)
         html = r.text
         
@@ -97,15 +97,18 @@ def extract_m3u8_from_seir(scraper, url, title):
             if embed_url.startswith('//'):
                 embed_url = 'https:' + embed_url
             elif embed_url.startswith('/'):
-                embed_url = 'https://www.seirsanduk.online' + embed_url
+                embed_url = 'https://seirsanduk.online' + embed_url
                 
-            headers = {
+            # Sitenin oturum çerezlerini (cookies) alt embed sunucusuna da zorla taşıyoruz
+            embed_headers = {
                 'Referer': url,
-                'Origin': 'https://www.seirsanduk.online'
+                'Origin': 'https://seirsanduk.online',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             }
-            embed_r = scraper.get(embed_url, headers=headers, timeout=12)
+            embed_r = scraper.get(embed_url, headers=embed_headers, timeout=12)
             embed_html = embed_r.text
             
+            # Gelişmiş boşluk duyarlı fonksiyon yakalama kalıbı
             src_match = re.search(r'src\s*:\s*([a-zA-Z0-9_]+)\s*\(\s*\)\s*,', embed_html)
             if src_match:
                 func_name = src_match.group(1)
@@ -151,6 +154,6 @@ if __name__ == '__main__':
     if m3u8_content and len(m3u8_content) > 10:
         with open('playlist.m3u8', 'w', encoding='utf-8') as f:
             f.write(m3u8_content)
-        print(f"\n [BAŞARILI] playlist.m3u8 dosyası güncellendi.")
+        print(f"\n [BAŞARILI] playlist.m3u8 dosyası güncellenedi.")
     else:
         print("\n [HATA] Liste boş kaldı, dosya güncellenmedi.")
