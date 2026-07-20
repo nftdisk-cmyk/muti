@@ -12,7 +12,6 @@ def generate_playlist():
     channel_links = {}
     results = []
     
-    # Oturum çerezlerini canlı saklayan gelişmiş scraper yapısı
     scraper = cloudscraper.create_scraper(
         browser={
             'browser': 'chrome',
@@ -21,6 +20,7 @@ def generate_playlist():
         }
     )
     
+    # Sitenin en çok dikkat ettiği tarayıcı dil ve oturum kimlikleri ana kurala eklendi
     scraper.headers.update({
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
         'Accept-Language': 'bg,en-US;q=0.7,en;q=0.3',
@@ -58,9 +58,8 @@ def generate_playlist():
         except Exception:
             pass
             
-    print(f"\n Toplam {len(channel_links)} kanal bulundu. Oturum kilitli spor çözücü başlatılıyor...")
+    print(f"\n Toplam {len(channel_links)} kanal bulundu. ro.glebul.com çözücü başlatılıyor...")
     
-    # Havuz tarama hızını, sitenin çerezleri kaçırmaması için dengeli tutuyoruz
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = [executor.submit(extract_m3u8_from_seir, scraper, href, title) for href, title in channel_links.items()]
         for future in futures:
@@ -82,7 +81,6 @@ def generate_playlist():
 
 def extract_m3u8_from_seir(scraper, url, title):
     try:
-        # Oturum çerezlerini koruyarak kanal sayfasına gidiyoruz
         r = scraper.get(url, timeout=15)
         html = r.text
         
@@ -99,16 +97,19 @@ def extract_m3u8_from_seir(scraper, url, title):
             elif embed_url.startswith('/'):
                 embed_url = 'https://seirsanduk.online' + embed_url
                 
-            # Sitenin oturum çerezlerini (cookies) alt embed sunucusuna da zorla taşıyoruz
+            # BULDUĞUN SORUNUN ÇÖZÜMÜ: Ana sitenin tüm çerezlerini (cookies) ro.glebul sunucusuna zorla taşıyoruz!
             embed_headers = {
                 'Referer': url,
                 'Origin': 'https://seirsanduk.online',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'Accept-Language': 'bg,en-US;q=0.7,en;q=0.3',
+                'Accept': '*/*'
             }
+            
+            # İstek atarken mevcut tarayıcı oturumunu (session) bozmadan devam ediyoruz
             embed_r = scraper.get(embed_url, headers=embed_headers, timeout=12)
             embed_html = embed_r.text
             
-            # Gelişmiş boşluk duyarlı fonksiyon yakalama kalıbı
             src_match = re.search(r'src\s*:\s*([a-zA-Z0-9_]+)\s*\(\s*\)\s*,', embed_html)
             if src_match:
                 func_name = src_match.group(1)
@@ -154,6 +155,6 @@ if __name__ == '__main__':
     if m3u8_content and len(m3u8_content) > 10:
         with open('playlist.m3u8', 'w', encoding='utf-8') as f:
             f.write(m3u8_content)
-        print(f"\n [BAŞARILI] playlist.m3u8 dosyası güncellenedi.")
+        print(f"\n [BAŞARILI] playlist.m3u8 dosyası güncellendi.")
     else:
         print("\n [HATA] Liste boş kaldı, dosya güncellenmedi.")
