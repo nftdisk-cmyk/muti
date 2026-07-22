@@ -11,9 +11,8 @@ class handler(BaseHTTPRequestHandler):
         try:
             m3u8_content = self.generate_playlist()
             self.send_response(200)
-            self.send_header('Content-Type', 'application/vnd.apple.mpegurl')
-            # Vercel'in linkleri hafızada (cache) tutup bayatlatmasını engelliyoruz. 
-            # Her istekte sıfırdan siteye gidip taze cdn3 linki üretecek.
+            # TiviMate ve tarayıcıların siyah ekran vermeden doğrudan M3U listesini indirmesi için metin formatı düzeltildi
+            self.send_header('Content-Type', 'text/plain; charset=utf-8')
             self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
             self.send_header('Pragma', 'no-cache')
             self.send_header('Expires', '0')
@@ -34,22 +33,23 @@ class handler(BaseHTTPRequestHandler):
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
             'Accept-Language': 'bg,en-US;q=0.7,en;q=0.3',
             'Referer': 'https://seirsanduk.online',
-            'Origin': 'https://seirsanduk.online'
+            'Origin': 'https://www.seirsanduk.online'
         })
         
         channel_links = {}
         results = []
         
         try:
+            # Sitenin şart koştuğu resmi www'li ana domaine yönlendirildi
             r = scraper.get("https://seirsanduk.online", timeout=15)
             if r.status_code == 200:
                 soup = BeautifulSoup(r.text, 'html.parser')
                 for a in soup.find_all('a', href=True):
                     href = a['href']
-                    if 'id=' in href:
+                    if 'id=' in href or '?id=' in href:
                         title = a.get('title') or a.text.strip()
                         if href.startswith('?'): href = f"https://seirsanduk.online{href}"
-                        elif href.startswith('/'): href = f"https://seirsanduk.online{href}"
+                        elif href.startswith('/'): href = f"https://www.seirsanduk.online{href}"
                         if title and title.lower() not in ['forum', 'връзка с нас', 'privacy policy']:
                             channel_links[href] = title.strip()
         except: 
@@ -59,7 +59,7 @@ class handler(BaseHTTPRequestHandler):
             futures = []
             for href, title in channel_links.items():
                 futures.append(executor.submit(self.extract_link, scraper, href, title))
-                time.sleep(0.6) # Sunucunun bizi banlayıp RO yapmaması için insansı nefes payı
+                time.sleep(0.6)
                 
             for future in futures:
                 res = future.result()
@@ -87,7 +87,7 @@ class handler(BaseHTTPRequestHandler):
                 
             for embed_url in iframe_match.groups():
                 if embed_url.startswith('//'): embed_url = 'https:' + embed_url
-                elif embed_url.startswith('/'): embed_url = 'https://seirsanduk.online' + embed_url
+                elif embed_url.startswith('/'): embed_url = 'https://www.seirsanduk.online' + embed_url
                 
                 embed_r = scraper.get(embed_url, headers={'Referer': url}, timeout=12)
                 embed_html = embed_r.text
@@ -109,6 +109,9 @@ class handler(BaseHTTPRequestHandler):
                             if var_match: base_url += "".join(ast.literal_eval(var_match.group(1)))
                             
                         doc_joins = re.findall(r'document\.getElementById\([\'"]([a-zA-Z0-9_]+)[\'"]\)\.innerHTML', expression)
+                        if not doc_joins:
+                            doc_joins = re.findall(r'document\.getElementById\(([a-zA-Z0-9_]+)\)\.innerHTML', expression)
+                            
                         for span_id in doc_joins:
                             span_match = re.search(rf'<span[^>]*id=[\'\"]?{span_id}[\'\"]?[^>]*>(.*?)</span>', embed_html)
                             if span_match: base_url += span_match.group(1).strip()

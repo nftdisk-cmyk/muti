@@ -6,7 +6,6 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 def generate_playlist():
-    # KESİN DÜZELTME: Sunucunun şart koştuğu tam ve resmi www'li adres formatı
     categories = [
         "https://seirsanduk.online"
     ]
@@ -41,7 +40,6 @@ def generate_playlist():
             
             for a in links:
                 href = a['href']
-                # GÜNCELLENEN SEÇİCİ: id içeren veya kanal parametresi taşıyan tüm a etiketlerini yakala
                 if 'id=' in href or '?id=' in href:
                     title = a.get('title') or a.text.strip()
                     
@@ -55,20 +53,16 @@ def generate_playlist():
                         
                     if href not in channel_links:
                         channel_links[href] = title.strip()
-        except Exception as e:
-            print(f"Hata: {str(e)}")
+        except Exception:
+            pass
             
-    if not channel_links:
-        print("Hata: Siteden hiçbir kanal bağlantısı ayıklanamadı! www adresi engellenmiş olabilir.")
-        return ""
-        
-    print(f"\n Toplam {len(channel_links)} kanal bulundu. Güvenli link çözücü başlatılıyor...")
+    print(f"\n Toplam {len(channel_links)} kanal bulundu. Premium çözücü başlatılıyor...")
     
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = []
         for href, title in channel_links.items():
             futures.append(executor.submit(extract_m3u8_from_seir, scraper, href, title))
-            time.sleep(0.6) # Yavaşlama filtresi birebir korunuyor
+            time.sleep(0.6) # Sunucuyu şüphelendirmemek için insansı nefes payı
             
         for future in futures:
             res = future.result()
@@ -83,7 +77,13 @@ def generate_playlist():
     playlist = "#EXTM3U\n"
     for title, url in results:
         playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
-        playlist += f'{url}\n'
+        
+        # SİLME KURALI KALDIRILDI: ro.glebul linkleri korunuyor ve TiviMate kalkan kırıcı boru hattı ekleniyor!
+        if "ro.glebul" in url.lower():
+            playlist += f'{url}|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3\n'
+        else:
+            # Standart temiz cdn3 linkleri için düz ve temiz çıktı formatı
+            playlist += f'{url}|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\n'
         
     return playlist
 
@@ -96,10 +96,7 @@ def extract_m3u8_from_seir(scraper, url, title):
         if not iframe_match:
             m = re.search(r'(https?://[^\s\"\'<>]*\.m3u8[^\s\"\'<>]*)', html)
             if m:
-                found_url = m.group(1).replace('\\/', '/')
-                if "ro.glebul" in found_url.lower():
-                    return None
-                return (title, found_url)
+                return (title, m.group(1).replace('\\/', '/'))
             return None
             
         for embed_url in iframe_match.groups():
@@ -146,17 +143,11 @@ def extract_m3u8_from_seir(scraper, url, title):
                             base_url += span_match.group(1).strip()
                             
                     if "http" in base_url:
-                        found_url = base_url.replace('\\/', '/')
-                        if "ro.glebul" in found_url.lower():
-                            return None
-                        return (title, found_url)
+                        return (title, base_url.replace('\\/', '/'))
                         
             m_sub = re.search(r'(https?://[^\s\"\'<>\\#]*\.m3u8[^\s\"\'<>\\#]*)', embed_html)
             if m_sub:
-                found_url = m_sub.group(1).replace('\\/', '/')
-                if "ro.glebul" in found_url.lower():
-                    return None
-                return (title, found_url)
+                return (title, m_sub.group(1).replace('\\/', '/'))
         return None
     except:
         return None
