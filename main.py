@@ -3,7 +3,30 @@ from bs4 import BeautifulSoup
 import re
 import ast
 import time
+import os
 from concurrent.futures import ThreadPoolExecutor
+
+def load_previous_playlist(path="playlist.m3u8"):
+    """Bir önceki çalıştırmadan başarılı olmuş (title -> url_satırı) eşleşmelerini okur.
+    Bu run'da bir kanal bulunamazsa eski hali korunacak, tamamen silinmeyecek."""
+    previous = {}
+    if not os.path.exists(path):
+        return previous
+
+    with open(path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+
+    current_title = None
+    for line in lines:
+        line = line.rstrip("\n")
+        if line.startswith("#EXTINF"):
+            m = re.search(r',(.*)$', line)
+            current_title = m.group(1).strip() if m else None
+        elif line and not line.startswith("#") and current_title:
+            previous[current_title] = line
+            current_title = None
+
+    return previous
 
 def generate_playlist():
     categories = [
@@ -69,7 +92,23 @@ def generate_playlist():
             if res and isinstance(res, tuple) and len(res) == 2:
                 results.append(res)
                 print(f"   🔥 [BAŞARILI] {res} kanalı listeye güvenle işlendi.")
-                
+
+    # --- Bu run'da bulunamayan kanalları önceki playlist'ten koru ---
+    previous = load_previous_playlist()
+    found_titles = {title for title, _ in results}
+    kept_from_previous = 0
+
+    for title, old_line in previous.items():
+        if title not in found_titles:
+            # Eski satırdan url'i ayıkla (| ile eklenmiş header'lardan önceki kısım)
+            old_url = old_line.split("|")[0].strip()
+            results.append((title, old_url))
+            kept_from_previous += 1
+            print(f"   ♻️  [KORUNDU] {title} bu run'da bulunamadı, önceki linki kullanıldı.")
+
+    if kept_from_previous:
+        print(f"\n {kept_from_previous} kanal bu run'da güncellenemedi, eski linkleriyle listede tutuldu.")
+
     if not results:
         print("\n Hata: Filtreye uygun çalışan hiçbir link bulunamadı!")
         return ""
@@ -78,16 +117,23 @@ def generate_playlist():
     for title, url in results:
         playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
         
-        # SİLME KURALI KALDIRILDI: ro.glebul linkleri korunuyor ve TiviMate kalkan kırıcı boru hattı ekleniyor!
         if "ro.glebul" in url.lower():
             playlist += f'{url}|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3\n'
         else:
-            # Standart temiz cdn3 linkleri için düz ve temiz çıktı formatı
             playlist += f'{url}|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\n'
         
     return playlist
 
-def extract_m3u8_from_seir(scraper, url, title):
+def extract_m3u8_from_seir(scraper, url, title, max_retries=3):
+    for attempt in range(max_retries):
+        result = _try_extract(scraper, url, title)
+        if result:
+            return result
+        if attempt < max_retries - 1:
+            time.sleep(1.5)  # rate-limit/timeout ihtimaline karşı kısa bekleme, sonra tekrar dene
+    return None
+
+def _try_extract(scraper, url, title):
     try:
         r = scraper.get(url, timeout=15)
         html = r.text
