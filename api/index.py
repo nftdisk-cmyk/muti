@@ -47,6 +47,24 @@ def is_blocked(url: str) -> bool:
     return any(domain in url_lower for domain in BLOCKED_DOMAINS)
 
 
+def verify_stream_url(scraper, url, referer="https://seirsanduk.online", timeout=6):
+    """Bir linkin gerçekten oynatılabilir olup olmadığını hızlıca kontrol eder.
+    Fallback linkler için kullanılıyor - kırık link göstermektense kanalı listeden çıkarmak daha iyi."""
+    headers = {
+        'Referer': referer,
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    }
+    try:
+        r = scraper.get(url, headers=headers, timeout=timeout, stream=True)
+        if r.status_code != 200:
+            return False
+        chunk = next(r.iter_content(chunk_size=512), b"")
+        text = chunk.decode("utf-8", errors="ignore")
+        return text.strip().startswith("#EXTM3U")
+    except Exception:
+        return False
+
+
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         try:
@@ -132,8 +150,10 @@ class handler(BaseHTTPRequestHandler):
         if missing_titles:
             fallback = fetch_github_fallback()
             for title in missing_titles:
-                if title in fallback:
-                    results.append((title, fallback[title]))
+                candidate_url = fallback.get(title)
+                if candidate_url and verify_stream_url(scraper, candidate_url):
+                    results.append((title, candidate_url))
+                # doğrulanamayan fallback linki eklenmiyor - kanal listeden düşüyor
 
         playlist = "#EXTM3U\n"
         for title, url in results:
