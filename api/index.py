@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 import cloudscraper
+import requests
 from bs4 import BeautifulSoup
 import re
 import ast
@@ -12,6 +13,33 @@ BLOCKED_DOMAINS = ["ro.glebul"]
 # Vercel fonksiyon süre limitine takılmamak için toplam scrape süresi bütçesi (saniye).
 # vercel.json'daki maxDuration'dan birkaç saniye düşük tutulmalı (yanıtı yazmaya da zaman lazım).
 TIME_BUDGET_SECONDS = 45
+
+# main.py'nin GitHub Actions ile saatlik güncelediği, doğrulanmış linkleri içeren dosya.
+# Canlı scrape bir kanalda başarısız olursa (hep ro.glebul dönerse vs.) buradaki son bilinen
+# çalışan link fallback olarak kullanılır - "önceki iyi link hâlâ çalışıyor" prensibiyle.
+GITHUB_FALLBACK_URL = "https://raw.githubusercontent.com/nftdisk-cmyk/muti/main/playlist.m3u8"
+
+
+def fetch_github_fallback(url=GITHUB_FALLBACK_URL):
+    """GitHub'daki son bilinen playlist'i title -> url eşlemesi olarak döner."""
+    fallback = {}
+    try:
+        r = requests.get(url, timeout=8)
+        if r.status_code != 200:
+            return fallback
+        current_title = None
+        for line in r.text.splitlines():
+            line = line.rstrip()
+            if line.startswith("#EXTINF"):
+                m = re.search(r',(.*)$', line)
+                current_title = m.group(1).strip() if m else None
+            elif line and not line.startswith("#") and current_title:
+                # Headerlar (|Referer=...) varsa ayıkla, sade url'i al
+                fallback[current_title] = line.split("|")[0].strip()
+                current_title = None
+    except Exception:
+        pass
+    return fallback
 
 
 def is_blocked(url: str) -> bool:
@@ -96,13 +124,33 @@ class handler(BaseHTTPRequestHandler):
                 if res and isinstance(res, tuple) and len(res) == 2:
                     results.append(res)
 
+        # --- Canlı scrape'te bulunamayan (hep ro.glebul dönen vs.) kanallar için
+        # GitHub'daki son bilinen çalışan linki fallback olarak kullan ---
+        found_titles = {title for title, _ in results}
+        missing_titles = [t for t in channel_links.values() if t not in found_titles]
+
+        if missing_titles:
+            fallback = fetch_github_fallback()
+            for title in missing_titles:
+                if title in fallback:
+                    results.append((title, fallback[title]))
+
         playlist = "#EXTM3U\n"
         for title, url in results:
             playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
             playlist += f'{url}\n'
         return playlist
 
-    def extract_link(self, scraper, url, title):
+    def extract_link(self, scraper, url, title, max_retries=2):
+        for attempt in range(max_retries):
+            result = self._try_extract_link(scraper, url, title)
+            if result:
+                return result
+            if attempt < max_retries - 1:
+                time.sleep(1)  # blocked domain geldiyse kısa bekleyip tekrar dene
+        return None
+
+    def _try_extract_link(self, scraper, url, title):
         try:
             r = scraper.get(url, timeout=15)
             html = r.text
