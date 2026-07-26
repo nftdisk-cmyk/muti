@@ -124,11 +124,33 @@ def generate_playlist():
         
     return playlist
 
+def verify_stream_url(scraper, url, referer="https://seirsanduk.online"):
+    """Bulunan m3u8 linkinin gerçekten oynatılabilir olup olmadığını kontrol eder.
+    ro.glebul gibi decoy/redirect domainlerin sessizce playliste sızmasını engeller."""
+    headers = {
+        'Referer': referer,
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    }
+    try:
+        r = scraper.get(url, headers=headers, timeout=8, stream=True)
+        if r.status_code != 200:
+            return False
+        # HLS manifest'i her zaman #EXTM3U ile başlar; ilk birkaç yüz byte yeterli
+        chunk = next(r.iter_content(chunk_size=512), b"")
+        text = chunk.decode("utf-8", errors="ignore")
+        return text.strip().startswith("#EXTM3U")
+    except Exception:
+        return False
+
 def extract_m3u8_from_seir(scraper, url, title, max_retries=3):
     for attempt in range(max_retries):
         result = _try_extract(scraper, url, title)
         if result:
-            return result
+            found_title, found_url = result
+            if verify_stream_url(scraper, found_url):
+                return result
+            else:
+                print(f"   ⚠️  [DECOY/ÖLÜ LİNK] {title} -> {found_url[:60]}... çalışmıyor, yeniden deneniyor.")
         if attempt < max_retries - 1:
             time.sleep(1.5)  # rate-limit/timeout ihtimaline karşı kısa bekleme, sonra tekrar dene
     return None
