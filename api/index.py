@@ -4,20 +4,33 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import ast
-from concurrent.futures import ThreadPoolExecutor, wait
+import base64
+from urllib.parse import urlparse, parse_qs, quote
 import time
 
 # Çalışmayan/decoy olduğu bilinen domainler - yeni biri çıkarsa buraya ekle
 BLOCKED_DOMAINS = ["ro.glebul"]
 
-# Vercel fonksiyon süre limitine takılmamak için toplam scrape süresi bütçesi (saniye).
-# vercel.json'daki maxDuration'dan birkaç saniye düşük tutulmalı (yanıtı yazmaya da zaman lazım).
-TIME_BUDGET_SECONDS = 45
-
 # main.py'nin GitHub Actions ile saatlik güncelediği, doğrulanmış linkleri içeren dosya.
-# Canlı scrape bir kanalda başarısız olursa (hep ro.glebul dönerse vs.) buradaki son bilinen
-# çalışan link fallback olarak kullanılır - "önceki iyi link hâlâ çalışıyor" prensibiyle.
+# Canlı çözümleme başarısız olursa (hep ro.glebul dönerse vs.) buradaki son bilinen
+# çalışan link fallback olarak kullanılır.
 GITHUB_FALLBACK_URL = "https://raw.githubusercontent.com/nftdisk-cmyk/muti/main/playlist.m3u8"
+
+# title ve href'i tek bir query param içine gömmek için ayraç (title/href içinde geçmesi olası değil)
+_SEP = "\x01"
+
+
+def encode_channel(title: str, href: str) -> str:
+    raw = f"{title}{_SEP}{href}".encode("utf-8")
+    return base64.urlsafe_b64encode(raw).decode("ascii")
+
+
+def decode_channel(code: str):
+    # base64 padding eksikse tamamla
+    padded = code + "=" * (-len(code) % 4)
+    raw = base64.urlsafe_b64decode(padded.encode("ascii")).decode("utf-8")
+    title, _, href = raw.partition(_SEP)
+    return title, href
 
 
 def fetch_github_fallback(url=GITHUB_FALLBACK_URL):
@@ -67,10 +80,18 @@ def verify_stream_url(scraper, url, referer="https://seirsanduk.online", timeout
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
+        parsed = urlparse(self.path)
+        query = parse_qs(parsed.query)
+
+        if 'play' in query:
+            self.handle_resolve(query['play'][0])
+        else:
+            self.handle_playlist()
+
+    def handle_playlist(self):
         try:
             m3u8_content = self.generate_playlist()
             self.send_response(200)
-            # TiviMate ve tarayıcıların siyah ekran vermeden doğrudan M3U listesini indirmesi için metin formatı
             self.send_header('Content-Type', 'text/plain; charset=utf-8')
             self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
             self.send_header('Pragma', 'no-cache')
@@ -84,8 +105,15 @@ class handler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(f"Error: {str(e)}".encode('utf-8'))
 
-    def generate_playlist(self):
-        start_time = time.time()
+    def handle_resolve(self, code):
+        try:
+            title, href = decode_channel(code)
+        except Exception:
+            self.send_response(400)
+            self.send_header('Content-Type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(b"Gecersiz kanal kodu")
+            return
 
         scraper = cloudscraper.create_scraper(
             browser={'browser': 'chrome', 'platform': 'windows', 'desktop': True}
@@ -97,8 +125,38 @@ class handler(BaseHTTPRequestHandler):
             'Origin': 'https://www.seirsanduk.online'
         })
 
+        result = self.extract_link(scraper, href, title)
+
+        if not result:
+            fallback = fetch_github_fallback()
+            candidate_url = fallback.get(title)
+            if candidate_url and verify_stream_url(scraper, candidate_url):
+                result = (title, candidate_url)
+
+        if result:
+            _, found_url = result
+            self.send_response(302)
+            self.send_header('Location', found_url)
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            self.end_headers()
+        else:
+            self.send_response(404)
+            self.send_header('Content-Type', 'text/plain; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(f"'{title}' su an cozumlenemedi.".encode('utf-8'))
+
+    def generate_playlist(self):
+        scraper = cloudscraper.create_scraper(
+            browser={'browser': 'chrome', 'platform': 'windows', 'desktop': True}
+        )
+        scraper.headers.update({
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+            'Accept-Language': 'bg,en-US;q=0.7,en;q=0.3',
+            'Referer': 'https://seirsanduk.online',
+            'Origin': 'https://www.seirsanduk.online'
+        })
+
         channel_links = {}
-        results = []
 
         try:
             r = scraper.get("https://seirsanduk.online", timeout=15)
@@ -117,48 +175,15 @@ class handler(BaseHTTPRequestHandler):
         except Exception:
             pass
 
-        # Ana sayfa taramasının kendisi bile bütçenin çoğunu yediyse, kalan süreyle devam et
-        elapsed = time.time() - start_time
-        remaining_budget = max(TIME_BUDGET_SECONDS - elapsed, 5)
-
-        with ThreadPoolExecutor(max_workers=5) as executor:
-            futures = [
-                executor.submit(self.extract_link, scraper, href, title)
-                for href, title in channel_links.items()
-            ]
-
-            # Süre bütçesi dolana kadar bekle; bitmeyen görevler iptal edilmeye çalışılır,
-            # ama tamamlanmış olanlar kaybolmadan playliste eklenir.
-            done, not_done = wait(futures, timeout=remaining_budget)
-
-            for future in not_done:
-                future.cancel()
-
-            for future in done:
-                try:
-                    res = future.result()
-                except Exception:
-                    res = None
-                if res and isinstance(res, tuple) and len(res) == 2:
-                    results.append(res)
-
-        # --- Canlı scrape'te bulunamayan (hep ro.glebul dönen vs.) kanallar için
-        # GitHub'daki son bilinen çalışan linki fallback olarak kullan ---
-        found_titles = {title for title, _ in results}
-        missing_titles = [t for t in channel_links.values() if t not in found_titles]
-
-        if missing_titles:
-            fallback = fetch_github_fallback()
-            for title in missing_titles:
-                candidate_url = fallback.get(title)
-                if candidate_url and verify_stream_url(scraper, candidate_url):
-                    results.append((title, candidate_url))
-                # doğrulanamayan fallback linki eklenmiyor - kanal listeden düşüyor
+        host = self.headers.get('Host', 'muti-bice.vercel.app')
+        base_url = f"https://{host}/api"
 
         playlist = "#EXTM3U\n"
-        for title, url in results:
+        for href, title in channel_links.items():
+            code = quote(encode_channel(title, href))
+            resolver_url = f"{base_url}?play={code}"
             playlist += f'#EXTINF:-1 tvg-id="" tvg-name="{title}" tvg-logo="" group-title="SeirSanduk",{title}\n'
-            playlist += f'{url}\n'
+            playlist += f'{resolver_url}\n'
         return playlist
 
     def extract_link(self, scraper, url, title, max_retries=2):
