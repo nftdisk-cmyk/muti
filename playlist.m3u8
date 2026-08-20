@@ -1,139 +1,139 @@
 #EXTM3U
 #EXTINF:-1 tvg-id="" tvg-name="BNT 1 HD" tvg-logo="" group-title="SeirSanduk",BNT 1 HD
-https://ro.glebul.com/hls/hd-bnt-1-hd/index.m3u8?e=1787197127&hash=tJxv5i-sZLzJ4WrtaN9E8w|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-bnt-1-hd/index.m3u8?e=1787202172&hash=JGBOwulBacD4bKzCCMpA0A|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="BNT 2" tvg-logo="" group-title="SeirSanduk",BNT 2
-https://cdn3.glebul.com/hls/bnt-2/index.m3u8?e=1787197128&hash=iS4MxZ7HoyM3ylU8Omgzww|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/bnt-2/index.m3u8?e=1787202172&hash=JGBOwulBacD4bKzCCMpA0A|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="BNT 3 HD" tvg-logo="" group-title="SeirSanduk",BNT 3 HD
-https://ro.glebul.com/hls/hd-bnt-3-hd/index.m3u8?e=1787197128&hash=iS4MxZ7HoyM3ylU8Omgzww|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-bnt-3-hd/index.m3u8?e=1787202173&hash=UUcJF9OBzkxhi4IuTamitw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="BNT 4" tvg-logo="" group-title="SeirSanduk",BNT 4
-https://cdn3.glebul.com/hls/bnt-4/index.m3u8?e=1787197129&hash=yMrSrweT8R3MZZ28Zhwb1g|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/bnt-4/index.m3u8?e=1787202173&hash=UUcJF9OBzkxhi4IuTamitw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="NOVA TV HD" tvg-logo="" group-title="SeirSanduk",NOVA TV HD
-https://cdn3.glebul.com/hls/hd-nova-tv-hd/index.m3u8?e=1787197129&hash=yMrSrweT8R3MZZ28Zhwb1g|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/hd-nova-tv-hd/index.m3u8?e=1787202174&hash=9ustWzmMx01ly9hYrWkESg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="BTV HD" tvg-logo="" group-title="SeirSanduk",BTV HD
-https://ro.glebul.com/hls/hd-btv-hd/index.m3u8?e=1787197130&hash=5YUY1ZWSdy8fRQNIfcQWlQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn3.glebul.com/hls/hd-btv-hd/index.m3u8?e=1787202175&hash=jGuR93UgKrq-PXgM9VRfEQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="BTV ACTION HD" tvg-logo="" group-title="SeirSanduk",BTV ACTION HD
-https://ro.glebul.com/hls/hd-btv-action-hd/index.m3u8?e=1787197130&hash=5YUY1ZWSdy8fRQNIfcQWlQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-btv-action-hd/index.m3u8?e=1787202175&hash=jGuR93UgKrq-PXgM9VRfEQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="BTV CINEMA" tvg-logo="" group-title="SeirSanduk",BTV CINEMA
-https://ro.glebul.com/hls/btv-cinema/index.m3u8?e=1787197131&hash=_QAVw1FIKvbJ-5ZKCVstaQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/btv-cinema/index.m3u8?e=1787202176&hash=gnVtM3WSYJAZ9Yd-A519EA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="BTV COMEDY HD" tvg-logo="" group-title="SeirSanduk",BTV COMEDY HD
-https://cdn3.glebul.com/hls/hd-btv-comedy-hd/index.m3u8?e=1787197132&hash=pwKz08lUZxSAC_FxQmCnLQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/hd-btv-comedy-hd/index.m3u8?e=1787202176&hash=gnVtM3WSYJAZ9Yd-A519EA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="BTV STORY" tvg-logo="" group-title="SeirSanduk",BTV STORY
-https://cdn3.glebul.com/hls/btv-story/index.m3u8?e=1787197132&hash=pwKz08lUZxSAC_FxQmCnLQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/btv-story/index.m3u8?e=1787202177&hash=jdbiBP4r1919do9XUiG_Cg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="BULGARIA ON AIR" tvg-logo="" group-title="SeirSanduk",BULGARIA ON AIR
-https://cdn3.glebul.com/hls/bulgaria-on-air/index.m3u8?e=1787197133&hash=6LeF6ZcPmHTS5s3icRYkaQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn11.glebul.com/hls/bulgaria-on-air/index.m3u8?e=1787202178&hash=GyHWE-0TD0Muij1dBzxfpw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="CARTOON NETWORK" tvg-logo="" group-title="SeirSanduk",CARTOON NETWORK
-https://ro.glebul.com/hls/cartoon-network/index.m3u8?e=1787197133&hash=6LeF6ZcPmHTS5s3icRYkaQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn3.glebul.com/hls/cartoon-network/index.m3u8?e=1787202178&hash=GyHWE-0TD0Muij1dBzxfpw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="CITY TV" tvg-logo="" group-title="SeirSanduk",CITY TV
-https://ro.glebul.com/hls/city-tv/index.m3u8?e=1787197134&hash=SsZLbVKsu0fTjjplAPINyQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/city-tv/index.m3u8?e=1787202179&hash=-3UBg1GaVeyStmSrLeVA0A|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="CODE FASHION TV HD" tvg-logo="" group-title="SeirSanduk",CODE FASHION TV HD
-https://ro.glebul.com/hls/hd-code-fashion-tv-hd/index.m3u8?e=1787197135&hash=aeNbci3wvzRrVulgikkx5A|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn3.glebul.com/hls/hd-code-fashion-tv-hd/index.m3u8?e=1787202179&hash=-3UBg1GaVeyStmSrLeVA0A|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="DIEMA FAMILY HD" tvg-logo="" group-title="SeirSanduk",DIEMA FAMILY HD
-https://ro.glebul.com/hls/hd-diema-family-hd/index.m3u8?e=1787197135&hash=aeNbci3wvzRrVulgikkx5A|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-diema-family-hd/index.m3u8?e=1787202184&hash=6gdX6xR3kjr1sFQnMIS_zQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="DIEMA SPORT HD" tvg-logo="" group-title="SeirSanduk",DIEMA SPORT HD
-https://ro.glebul.com/hls/hd-diema-sport-hd/index.m3u8?e=1787197136&hash=Y4nSMJH5nBmck9hEIlSGbA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-diema-sport-hd/index.m3u8?e=1787202183&hash=i4YcLa_Rqr0eRnIoSHq0mw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="DIEMA SPORT 2 HD" tvg-logo="" group-title="SeirSanduk",DIEMA SPORT 2 HD
-https://ro.glebul.com/hls/hd-diema-sport-2-hd/index.m3u8?e=1787197136&hash=Y4nSMJH5nBmck9hEIlSGbA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-diema-sport-2-hd/index.m3u8?e=1787202186&hash=vRuDKwtlpJWJxEWasHjlFw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="DIEMA SPORT 3 HD" tvg-logo="" group-title="SeirSanduk",DIEMA SPORT 3 HD
-https://ro.glebul.com/hls/hd-diema-sport-3-hd/index.m3u8?e=1787197137&hash=r1TpV5HAg5n86tMdR5uFSg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-diema-sport-3-hd/index.m3u8?e=1787202182&hash=PJ5yON1MpRA4nKKaoYZQ8Q|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="DIEMA HD" tvg-logo="" group-title="SeirSanduk",DIEMA HD
-https://cdn3.glebul.com/hls/hd-diema-hd/index.m3u8?e=1787197138&hash=sX3VPyWpzkkfvGYEtXCFbQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/hd-diema-hd/index.m3u8?e=1787202182&hash=PJ5yON1MpRA4nKKaoYZQ8Q|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="DISNEY CHANNEL" tvg-logo="" group-title="SeirSanduk",DISNEY CHANNEL
-https://cdn3.glebul.com/hls/disney-channel/index.m3u8?e=1787197138&hash=sX3VPyWpzkkfvGYEtXCFbQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/disney-channel/index.m3u8?e=1787202183&hash=i4YcLa_Rqr0eRnIoSHq0mw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="DISCOVERY CHANNEL HD" tvg-logo="" group-title="SeirSanduk",DISCOVERY CHANNEL HD
-https://ro.glebul.com/hls/hd-discovery-channel-hd/index.m3u8?e=1787197139&hash=s6qTrGRzNW4QA5Sn4kX_Zw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn3.glebul.com/hls/hd-discovery-channel-hd/index.m3u8?e=1787202184&hash=6gdX6xR3kjr1sFQnMIS_zQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="DSTV" tvg-logo="" group-title="SeirSanduk",DSTV
-https://cdn3.glebul.com/hls/dstv/index.m3u8?e=1787197139&hash=s6qTrGRzNW4QA5Sn4kX_Zw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/dstv/index.m3u8?e=1787202184&hash=6gdX6xR3kjr1sFQnMIS_zQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="E KIDS" tvg-logo="" group-title="SeirSanduk",E KIDS
-https://ro.glebul.com/hls/e-kids/index.m3u8?e=1787197140&hash=wsgc5KmnoigzJZj5bCJrHA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn3.glebul.com/hls/e-kids/index.m3u8?e=1787202185&hash=Lj_-c_q9DrLQi59eKvuE3Q|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="EPIC DRAMA HD" tvg-logo="" group-title="SeirSanduk",EPIC DRAMA HD
-https://ro.glebul.com/hls/hd-epic-drama-hd/index.m3u8?e=1787197141&hash=gc8TBPqkWg1eg5feIuNwng|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn3.glebul.com/hls/hd-epic-drama-hd/index.m3u8?e=1787202186&hash=vRuDKwtlpJWJxEWasHjlFw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="EUROSPORT 1 HD" tvg-logo="" group-title="SeirSanduk",EUROSPORT 1 HD
-https://ro.glebul.com/hls/hd-eurosport-1-hd/index.m3u8?e=1787197141&hash=gc8TBPqkWg1eg5feIuNwng|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-eurosport-1-hd/index.m3u8?e=1787202186&hash=vRuDKwtlpJWJxEWasHjlFw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="EUROSPORT 2 HD" tvg-logo="" group-title="SeirSanduk",EUROSPORT 2 HD
-https://ro.glebul.com/hls/hd-eurosport-2-hd/index.m3u8?e=1787197142&hash=hNqI3qAQ05J2nJx6Fa6M5Q|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-eurosport-2-hd/index.m3u8?e=1787202187&hash=4svqfomPtGsDs7zZHODpKg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="EURONEWS BULGARIA HD" tvg-logo="" group-title="SeirSanduk",EURONEWS BULGARIA HD
-https://cdn3.glebul.com/hls/hd-euronews-bulgaria-hd/index.m3u8?e=1787197142&hash=hNqI3qAQ05J2nJx6Fa6M5Q|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/hd-euronews-bulgaria-hd/index.m3u8?e=1787202187&hash=4svqfomPtGsDs7zZHODpKg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="EVROKOM" tvg-logo="" group-title="SeirSanduk",EVROKOM
-https://cdn3.glebul.com/hls/evrokom/index.m3u8?e=1787197143&hash=0C1Phbc1GCzZa57pEpzRlw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/evrokom/index.m3u8?e=1787202188&hash=5xTTBZQWWMUDpNxIpnxeXA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="FOLKLOR TV" tvg-logo="" group-title="SeirSanduk",FOLKLOR TV
-https://cdn3.glebul.com/hls/folklor-tv/index.m3u8?e=1787197144&hash=753Ip8VVR_GEj-wMyH-PNw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/folklor-tv/index.m3u8?e=1787202188&hash=5xTTBZQWWMUDpNxIpnxeXA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="FOOD NETWORK HD" tvg-logo="" group-title="SeirSanduk",FOOD NETWORK HD
-https://ro.glebul.com/hls/hd-food-network-hd/index.m3u8?e=1787197144&hash=753Ip8VVR_GEj-wMyH-PNw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-food-network-hd/index.m3u8?e=1787202189&hash=2j8wKwL3-ZF-2H5P1_qGzw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="STAR CRIME HD" tvg-logo="" group-title="SeirSanduk",STAR CRIME HD
-https://ro.glebul.com/hls/hd-star-crime-hd/index.m3u8?e=1787197145&hash=evFtcCvABbFUDsYRhBR2eg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-star-crime-hd/index.m3u8?e=1787202190&hash=uOngSp0ALsJgniwFwjpBOg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="STAR CHANNEL HD" tvg-logo="" group-title="SeirSanduk",STAR CHANNEL HD
-https://ro.glebul.com/hls/hd-star-channel-hd/index.m3u8?e=1787197145&hash=evFtcCvABbFUDsYRhBR2eg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-star-channel-hd/index.m3u8?e=1787202190&hash=uOngSp0ALsJgniwFwjpBOg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="STAR LIFE HD" tvg-logo="" group-title="SeirSanduk",STAR LIFE HD
-https://cdn3.glebul.com/hls/hd-star-life-hd/index.m3u8?e=1787197146&hash=M30AJN-AuAbFLNjz1CLyhQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/hd-star-life-hd/index.m3u8?e=1787202191&hash=was31v-GasPVaO4bfkumew|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="ID XTRA HD" tvg-logo="" group-title="SeirSanduk",ID XTRA HD
-https://ro.glebul.com/hls/hd-id-xtra-hd/index.m3u8?e=1787197147&hash=S304Y2uAsYh330Ec1P0mjQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-id-xtra-hd/index.m3u8?e=1787202191&hash=was31v-GasPVaO4bfkumew|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="KANAL 3" tvg-logo="" group-title="SeirSanduk",KANAL 3
-https://cdn3.glebul.com/hls/kanal-3/index.m3u8?e=1787197147&hash=S304Y2uAsYh330Ec1P0mjQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/kanal-3/index.m3u8?e=1787202192&hash=Y2VhaKdqX2pgYUUj1K-W_A|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="KINO NOVA HD" tvg-logo="" group-title="SeirSanduk",KINO NOVA HD
-https://cdn3.glebul.com/hls/hd-kino-nova-hd/index.m3u8?e=1787197148&hash=iaa6sr4muoUJbmube0liMw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/hd-kino-nova-hd/index.m3u8?e=1787202193&hash=2hbz2gcHl69_iAuHBOr2EA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="MAX ONE HD" tvg-logo="" group-title="SeirSanduk",MAX ONE HD
-https://cdn3.glebul.com/hls/hd-max-one-hd/index.m3u8?e=1787197148&hash=iaa6sr4muoUJbmube0liMw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/hd-max-one-hd/index.m3u8?e=1787202193&hash=2hbz2gcHl69_iAuHBOr2EA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="MAX SPORT 1 HD" tvg-logo="" group-title="SeirSanduk",MAX SPORT 1 HD
-https://ro.glebul.com/hls/hd-max-sport-1-hd/index.m3u8?e=1787197149&hash=eM4oZZNz11PMsIlDozoFOg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-max-sport-1-hd/index.m3u8?e=1787202194&hash=COCBwQLNYQW08_Bm1KIfkQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="MAX SPORT 2 HD" tvg-logo="" group-title="SeirSanduk",MAX SPORT 2 HD
-https://ro.glebul.com/hls/hd-max-sport-2-hd/index.m3u8?e=1787197150&hash=WkUkV6XTtlTioWA-EGcN3Q|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-max-sport-2-hd/index.m3u8?e=1787202194&hash=COCBwQLNYQW08_Bm1KIfkQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="MAX SPORT 3 HD" tvg-logo="" group-title="SeirSanduk",MAX SPORT 3 HD
-https://ro.glebul.com/hls/hd-max-sport-3-hd/index.m3u8?e=1787197150&hash=WkUkV6XTtlTioWA-EGcN3Q|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-max-sport-3-hd/index.m3u8?e=1787202195&hash=Rqjm9vdPOaQugpCBqQaqqA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="MAX SPORT 4 HD" tvg-logo="" group-title="SeirSanduk",MAX SPORT 4 HD
-https://ro.glebul.com/hls/hd-max-sport-4-hd/index.m3u8?e=1787197151&hash=fR3aWPofmSYUhnNDWEhLUQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-max-sport-4-hd/index.m3u8?e=1787202196&hash=h5tX06n3lOeUbyliqyuWsg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="NAT GEO HD" tvg-logo="" group-title="SeirSanduk",NAT GEO HD
-https://ro.glebul.com/hls/hd-nat-geo-hd/index.m3u8?e=1787197151&hash=fR3aWPofmSYUhnNDWEhLUQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-nat-geo-hd/index.m3u8?e=1787202196&hash=h5tX06n3lOeUbyliqyuWsg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="NAT GEO WILD HD" tvg-logo="" group-title="SeirSanduk",NAT GEO WILD HD
-https://ro.glebul.com/hls/hd-nat-geo-wild-hd/index.m3u8?e=1787197152&hash=mXi_ZJHkBThEi9TFgFhEdQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn3.glebul.com/hls/hd-nat-geo-wild-hd/index.m3u8?e=1787202197&hash=kAistI_Z2ALC7Bo0CRqZ2w|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="NICK JR" tvg-logo="" group-title="SeirSanduk",NICK JR
-https://ro.glebul.com/hls/nick-jr/index.m3u8?e=1787197153&hash=OmzPSmGDtPqp6q0FjQVdXA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/nick-jr/index.m3u8?e=1787202197&hash=kAistI_Z2ALC7Bo0CRqZ2w|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="NICKELODEON" tvg-logo="" group-title="SeirSanduk",NICKELODEON
-https://cdn3.glebul.com/hls/nickelodeon/index.m3u8?e=1787197153&hash=OmzPSmGDtPqp6q0FjQVdXA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/nickelodeon/index.m3u8?e=1787202198&hash=sF07k-4yKTcTG0U1OPQrFw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="NICKTOONS" tvg-logo="" group-title="SeirSanduk",NICKTOONS
-https://cdn3.glebul.com/hls/nicktoons/index.m3u8?e=1787197154&hash=2d8hA5r0O_sXjaj7B9jUHw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/nicktoons/index.m3u8?e=1787202199&hash=D4zr9QwztdtIIzhbTcT5bQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="NOVA NEWS HD" tvg-logo="" group-title="SeirSanduk",NOVA NEWS HD
-https://cdn11.glebul.com/hls/hd-nova-news-hd/index.m3u8?e=1787197154&hash=2d8hA5r0O_sXjaj7B9jUHw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/hd-nova-news-hd/index.m3u8?e=1787202199&hash=D4zr9QwztdtIIzhbTcT5bQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="NOVA SPORT HD" tvg-logo="" group-title="SeirSanduk",NOVA SPORT HD
-https://ro.glebul.com/hls/hd-nova-sport-hd/index.m3u8?e=1787197155&hash=0IiyXJK1JkgBcINc28vglg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-nova-sport-hd/index.m3u8?e=1787202200&hash=Zlpzg1KcLoMhNVeuMgeTKw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="PLANETA FOLK" tvg-logo="" group-title="SeirSanduk",PLANETA FOLK
-https://cdn3.glebul.com/hls/planeta-folk/index.m3u8?e=1787197156&hash=XWe0Ny_D9SJsIfvMflz1OQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/planeta-folk/index.m3u8?e=1787202200&hash=Zlpzg1KcLoMhNVeuMgeTKw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="PLANETA HD" tvg-logo="" group-title="SeirSanduk",PLANETA HD
-https://cdn3.glebul.com/hls/hd-planeta-hd/index.m3u8?e=1787197156&hash=XWe0Ny_D9SJsIfvMflz1OQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn11.glebul.com/hls/hd-planeta-hd/index.m3u8?e=1787202201&hash=9iv21Cnjx5IQ6qXi31U4KA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="RING BG HD" tvg-logo="" group-title="SeirSanduk",RING BG HD
-https://ro.glebul.com/hls/hd-ring-bg-hd/index.m3u8?e=1787197157&hash=KQQ5GjGQewzXrVNgUx8TRA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-ring-bg-hd/index.m3u8?e=1787202202&hash=VtxR8jL8gS9g4J80jRTvqw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="RODINA TV" tvg-logo="" group-title="SeirSanduk",RODINA TV
-https://ro.glebul.com/hls/rodina-tv/index.m3u8?e=1787197157&hash=KQQ5GjGQewzXrVNgUx8TRA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn3.glebul.com/hls/rodina-tv/index.m3u8?e=1787202202&hash=VtxR8jL8gS9g4J80jRTvqw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="78 TV HD" tvg-logo="" group-title="SeirSanduk",78 TV HD
-https://ro.glebul.com/hls/hd-78-tv-hd/index.m3u8?e=1787197158&hash=RsuNqMlR1stmqiiDjTJ4aQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-78-tv-hd/index.m3u8?e=1787202203&hash=0oqxYQdO2p_ujwIXwKUdXg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="SKAT" tvg-logo="" group-title="SeirSanduk",SKAT
-https://cdn3.glebul.com/hls/skat/index.m3u8?e=1787197159&hash=OugnPGUmU_-amOnaYjUaXw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/skat/index.m3u8?e=1787202203&hash=0oqxYQdO2p_ujwIXwKUdXg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="THE VOICE" tvg-logo="" group-title="SeirSanduk",THE VOICE
-https://ro.glebul.com/hls/the-voice/index.m3u8?e=1787197159&hash=OugnPGUmU_-amOnaYjUaXw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/the-voice/index.m3u8?e=1787202204&hash=ajbYBspHgtr8s4d1nbfLdw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="TIANKOV TV" tvg-logo="" group-title="SeirSanduk",TIANKOV TV
-https://ro.glebul.com/hls/tiankov-tv/index.m3u8?e=1787197160&hash=dPM8AqL4K61_vmP1rm6aCg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn3.glebul.com/hls/tiankov-tv/index.m3u8?e=1787202205&hash=qT6yRvyYEA7nGcSRBkC45Q|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="TLC" tvg-logo="" group-title="SeirSanduk",TLC
-https://cdn3.glebul.com/hls/tlc/index.m3u8?e=1787197160&hash=dPM8AqL4K61_vmP1rm6aCg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/tlc/index.m3u8?e=1787202205&hash=qT6yRvyYEA7nGcSRBkC45Q|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="TRAVEL CHANNEL HD" tvg-logo="" group-title="SeirSanduk",TRAVEL CHANNEL HD
-https://ro.glebul.com/hls/hd-travel-channel-hd/index.m3u8?e=1787197161&hash=30ekkue2vJsAxxhITp0SQQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-travel-channel-hd/index.m3u8?e=1787202206&hash=4lYwB_9rTHRj18z3FUFw4A|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="TRAVEL TV" tvg-logo="" group-title="SeirSanduk",TRAVEL TV
-https://ro.glebul.com/hls/travel-tv/index.m3u8?e=1787197162&hash=-NVSgivxHKjm0yJaQpwwew|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn11.glebul.com/hls/travel-tv/index.m3u8?e=1787202206&hash=4lYwB_9rTHRj18z3FUFw4A|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="VIASAT EXPLORE HD" tvg-logo="" group-title="SeirSanduk",VIASAT EXPLORE HD
-https://cdn3.glebul.com/hls/hd-viasat-explore-hd/index.m3u8?e=1787197162&hash=-NVSgivxHKjm0yJaQpwwew|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn3.glebul.com/hls/hd-viasat-explore-hd/index.m3u8?e=1787202207&hash=-yn7IMCaLg3HScY12HkEkA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="VTK" tvg-logo="" group-title="SeirSanduk",VTK
-https://cdn3.glebul.com/hls/vtk/index.m3u8?e=1787197163&hash=OIBEVReW_BtI1_0JG19nDw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn11.glebul.com/hls/vtk/index.m3u8?e=1787202208&hash=1iEMcVvyVhrzcWULkL56lQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="24 KITCHEN HD" tvg-logo="" group-title="SeirSanduk",24 KITCHEN HD
-https://ro.glebul.com/hls/hd-24-kitchen-hd/index.m3u8?e=1787197163&hash=OIBEVReW_BtI1_0JG19nDw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://ro.glebul.com/hls/hd-24-kitchen-hd/index.m3u8?e=1787202208&hash=1iEMcVvyVhrzcWULkL56lQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="AXN" tvg-logo="" group-title="SeirSanduk",AXN
-https://cdn3.glebul.com/hls/axn/index.m3u8?e=1787197164&hash=BG5ZVZJDk75NMIyDcLptdw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/axn/index.m3u8?e=1787202209&hash=IxI57NjAeK546mvcGsfujQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="AXN BLACK" tvg-logo="" group-title="SeirSanduk",AXN BLACK
-https://cdn3.glebul.com/hls/axn-black/index.m3u8?e=1787197165&hash=xFSXtzP9FFbmgOQgaHmnpw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/axn-black/index.m3u8?e=1787202209&hash=IxI57NjAeK546mvcGsfujQ|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="AXN WHITE" tvg-logo="" group-title="SeirSanduk",AXN WHITE
-https://cdn3.glebul.com/hls/axn-white/index.m3u8?e=1787197165&hash=xFSXtzP9FFbmgOQgaHmnpw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ro.glebul.com/hls/axn-white/index.m3u8?e=1787202210&hash=tALmyF8DQx6yZiZYApDM3g|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
 #EXTINF:-1 tvg-id="" tvg-name="BLOOMBERG TV" tvg-logo="" group-title="SeirSanduk",BLOOMBERG TV
-https://ro.glebul.com/hls/bloomberg-tv/index.m3u8?e=1787197166&hash=dGDDAM86qT-0j7hr9lUkQw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36|Accept-Language=bg,en-US;q=0.7,en;q=0.3
+https://cdn3.glebul.com/hls/bloomberg-tv/index.m3u8?e=1787202211&hash=OC8De2jO8DMJsKT3zeoxrg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="Player 1" tvg-logo="" group-title="SeirSanduk",Player 1
-https://cdn11.glebul.com/hlsfhd/hd-btv-hd.m3u8?e=1787197166&hash=dGDDAM86qT-0j7hr9lUkQw|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://cdn11.glebul.com/hlsfhd/hd-btv-hd.m3u8?e=1787202211&hash=OC8De2jO8DMJsKT3zeoxrg|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="Player 2" tvg-logo="" group-title="SeirSanduk",Player 2
-https://ssdraid.glebul.com/hls/hd-btv-hd/index.m3u8?e=1787197167&hash=xcy0nhZUVeNVeWmhGN8Q4w|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://ssdraid.glebul.com/hls/hd-btv-hd/index.m3u8?e=1787202212&hash=3CcK11HdR__ldD5kvFMHpA|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTINF:-1 tvg-id="" tvg-name="Player 3" tvg-logo="" group-title="SeirSanduk",Player 3
-https://raid0.glebul.com:8443/dvr/hd-btv-hd/tracks-v1a1/rewind-86400.m3u8?token=f114b7f272322a14a569cdbaf61c2b513f2017d1-4e11e605a9710fa41857d16f32e61127-1787200468-1787189668|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+https://raid0.glebul.com:8443/dvr/hd-btv-hd/tracks-v1a1/rewind-86400.m3u8?token=af570ff721be5edae47ca5744f22ba3ffacb2070-315ffb29a8444ca91b03f20be8082ccb-1787205512-1787194712|Referer=https://seirsanduk.online|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
